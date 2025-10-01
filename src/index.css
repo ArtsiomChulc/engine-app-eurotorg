@@ -51,3 +51,8 @@ button {
 button:active {
     outline: 2px auto #646cff;
 }
+
+a, a:active, a:focus {
+    text-decoration: none;
+    color: inherit;
+}

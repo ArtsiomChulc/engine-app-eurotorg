@@ -4,6 +4,7 @@ import '../../../../index.css';
 import { BiObjectsHorizontalLeft } from 'react-icons/bi';
 import { CgProfile } from 'react-icons/cg';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { BrowserRouter } from 'react-router';
 
 const meta = {
     component: NavIcon,
@@ -24,15 +25,17 @@ const meta = {
             control: 'boolean',
         },
         active: {
-            control: 'boolean'
+            control: 'boolean',
         },
         onClick: { action: 'clicked' },
     },
     decorators: [
         Story => (
-            <div style={{ minWidth: '100%' }}>
-                <Story />
-            </div>
+            <BrowserRouter>
+                <div style={{ minWidth: '100%' }}>
+                    <Story />
+                </div>
+            </BrowserRouter>
         ),
     ],
 } satisfies Meta<typeof NavIcon>;
@@ -43,6 +46,7 @@ type Story = StoryObj<typeof meta>;
 export const LargeIconProfile: Story = {
     args: {
         size: 'lg',
+        to: '/object',
         children: (
             <>
                 <CgProfile />
@@ -55,6 +59,7 @@ export const LargeIconProfile: Story = {
 export const IconProfileMd: Story = {
     args: {
         size: 'md',
+        to: '/',
         children: (
             <>
                 <BiObjectsHorizontalLeft />
@@ -67,6 +72,7 @@ export const IconProfileMd: Story = {
 export const IconProfileSm: Story = {
     args: {
         size: 'sm',
+        to: '/',
         children: (
             <>
                 <FaMapMarkerAlt />
@@ -80,6 +86,7 @@ export const IconProfilePrime: Story = {
     args: {
         size: 'sm',
         isPriming: true,
+        to: '/',
         children: (
             <>
                 <FaMapMarkerAlt />
@@ -94,6 +101,7 @@ export const IconProfileDisabled: Story = {
         size: 'sm',
         isPriming: true,
         disabled: true,
+        to: '/',
         children: (
             <>
                 <FaMapMarkerAlt />
@@ -107,6 +115,7 @@ export const IconProfileActive: Story = {
     args: {
         size: 'sm',
         active: true,
+        to: '/',
         children: (
             <>
                 <FaMapMarkerAlt />
@@ -121,6 +130,7 @@ export const IconProfileActivePrime: Story = {
         size: 'sm',
         isPriming: true,
         active: true,
+        to: '/',
         children: (
             <>
                 <FaMapMarkerAlt />

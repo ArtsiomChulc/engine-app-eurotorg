@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { NavLink } from 'react-router';
 import styled, { css } from 'styled-components';
 
 type SizeNavIcon = 'lg' | 'md' | 'sm';
@@ -16,7 +17,7 @@ const NavIconStyled = styled.div<StyledNavIconProps>`
     flex-direction: column;
     justify-content: center;
     gap: 4px;
-    white-space: pre;   
+    white-space: pre;
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--text-secondary);
@@ -36,52 +37,46 @@ const NavIconStyled = styled.div<StyledNavIconProps>`
             }
         }};
     }
-    
+
     //size
-    ${({$size}) => {
+    ${({ $size }) => {
         switch ($size) {
             case 'lg':
                 return css`
                     width: 80px;
                     padding: 14px;
                     font-size: var(--text-base);
-                `
-            case 'md': 
+                `;
+            case 'md':
                 return css`
                     width: 60px;
                     padding: 12px;
                     font-size: var(--text-sm);
-                `
+                `;
             case 'sm':
                 return css`
                     width: 50px;
                     padding: 10px;
                     font-size: var(--text-xs);
-                `
+                `;
         }
-    }}
-
-        //isPriming
-    ${({$isPriming}) => (
-        $isPriming && css`
+    }} //isPriming
+    ${({ $isPriming }) =>
+        $isPriming &&
+        css`
             background: var(--bg-secondary);
-        `
-    )}
-
-        //disabled
-    ${({$disabled}) => (
-        $disabled && css`
-            opacity: .6;
+        `} //disabled
+    ${({ $disabled }) =>
+        $disabled &&
+        css`
+            opacity: 0.6;
             cursor: not-allowed;
-        `
-    )}
-
-        //active
-    ${({$active}) => (
-        $active && css`
+        `} //active
+    ${({ $active }) =>
+        $active &&
+        css`
             color: var(--primary-dark);
-        `
-    )}
+        `}
 `;
 
 type NavProfileProps = {
@@ -90,7 +85,8 @@ type NavProfileProps = {
     isPriming?: boolean;
     disabled?: boolean;
     onClick?: () => void;
-    active?: boolean
+    active?: boolean;
+    to: string;
 };
 
 export const NavIcon = ({
@@ -99,17 +95,20 @@ export const NavIcon = ({
     onClick,
     isPriming = false,
     disabled = false,
-    active = false
+    active = false,
+    to
 }: NavProfileProps) => {
     return (
-        <NavIconStyled
-            $disabled={disabled}
-            $isPriming={isPriming}
-            $active={active}
-            onClick={onClick}
-            $size={size}
-        >
-            {children}
-        </NavIconStyled>
+        <NavLink to={to}>
+            <NavIconStyled
+                $disabled={disabled}
+                $isPriming={isPriming}
+                $active={active}
+                onClick={onClick}
+                $size={size}
+            >
+                {children}
+            </NavIconStyled>
+        </NavLink>
     );
 };
