@@ -95,20 +95,24 @@ export const NavIcon = ({
     onClick,
     isPriming = false,
     disabled = false,
-    active = false,
     to
 }: NavProfileProps) => {
     return (
-        <NavLink to={to}>
-            <NavIconStyled
-                $disabled={disabled}
-                $isPriming={isPriming}
-                $active={active}
-                onClick={onClick}
-                $size={size}
-            >
-                {children}
-            </NavIconStyled>
+        <NavLink
+            to={to}
+            style={{ textDecoration: 'none' }} // убираем подчёркивание
+        >
+            {({ isActive }) => (
+                <NavIconStyled
+                    $disabled={disabled}
+                    $isPriming={isPriming}
+                    $active={isActive}
+                    onClick={onClick}
+                    $size={size}
+                >
+                    {children}
+                </NavIconStyled>
+            )}
         </NavLink>
     );
 };
