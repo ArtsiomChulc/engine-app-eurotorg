@@ -1,0 +1,53 @@
+:root {
+    /* Основные цвета */
+    --primary: #2563eb; /* Синий - основные кнопки */
+    --primary-dark: #1d4ed8;
+    --secondary: #64748b; /* Серый - второстепенные элементы */
+    --success: #10b981; /* Зеленый - успешные действия */
+    --warning: #f59e0b; /* Желтый - предупреждения */
+    --error: #ef4444; /* Красный - ошибки */
+
+    /* Фоны */
+    --bg-primary: #ffffff;
+    --bg-secondary: rgba(236, 243, 243, 0.8);
+    --bg-sidebar: #1e293b;
+    /* Текст */
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-light: #ffffff;
+    /*Типографика*/
+    /* Шрифты */
+    font-family: 'Inter', -apple-system, sans-serif;
+
+    /* Размеры */
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --text-xl: 20px;
+    --text-2xl: 24px;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+button:active {
+    outline: 2px auto #646cff;
+}
