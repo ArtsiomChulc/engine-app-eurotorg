@@ -18,9 +18,6 @@ const meta = {
             control: { type: 'select' },
             options: ['sm', 'md', 'lg'],
         },
-        isPriming: {
-            control: 'boolean',
-        },
         disabled: {
             control: 'boolean',
         },
@@ -85,7 +82,6 @@ export const IconProfileSm: Story = {
 export const IconProfilePrime: Story = {
     args: {
         size: 'sm',
-        isPriming: true,
         to: '/',
         children: (
             <>
@@ -99,7 +95,6 @@ export const IconProfilePrime: Story = {
 export const IconProfileDisabled: Story = {
     args: {
         size: 'sm',
-        isPriming: true,
         disabled: true,
         to: '/',
         children: (
@@ -128,7 +123,6 @@ export const IconProfileActive: Story = {
 export const IconProfileActivePrime: Story = {
     args: {
         size: 'sm',
-        isPriming: true,
         active: true,
         to: '/',
         children: (
