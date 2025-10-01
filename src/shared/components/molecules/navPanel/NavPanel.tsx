@@ -1,55 +1,50 @@
-import { PATHS } from '@/app/paths/PATHS';
 import { NavIcon } from '@/shared/components/atoms/navIcon/NavIcon';
-import { BiObjectsHorizontalLeft } from 'react-icons/bi';
-import { CgProfile } from 'react-icons/cg';
-import { FaMapMarkerAlt } from 'react-icons/fa';
+import { pathArr } from '@/shared/components/molecules/navPanel/schemas';
+import { useWindowSize } from '@/shared/hooks/useWindowSize';
 import styled from 'styled-components';
-
-const pathArr = [
-    {
-        to: PATHS.regions,
-        icon: <FaMapMarkerAlt />
-    },
-    {
-        to: PATHS.home,
-        icon: <CgProfile />
-    },
-    {
-        to: PATHS.objects,
-        icon: <BiObjectsHorizontalLeft />
-    },
-]
 
 const NavPanelStyled = styled.div`
     margin-top: auto;
     width: 100%;
-    padding: 10px 15px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     position: relative;
-    
+    align-self: flex-end;
+
     &:after {
         content: '';
         position: absolute;
-        top: 0;
+        top: -5px;
         left: 0;
         width: 100%;
         height: 1px;
         background: var(--line-decor);
     }
-`
+`;
 
 export const NavPanel = () => {
+    const { width } = useWindowSize();
+
+    const getSizeIcon = () => {
+        if (width <= 576) {
+            return 'sm'
+        } else if (width <= 768) {
+            return 'md'
+        }
+        return 'lg';
+    };
+
     return (
         <NavPanelStyled>
-            {pathArr.map(({icon, to}) => {
+            {pathArr.map(({ icon, to }) => {
                 return (
-                    <NavIcon key={to} to={to}>
+                    <NavIcon key={to} to={to} size={getSizeIcon()}>
                         {icon}
                         Объекты
                     </NavIcon>
-                )
+                );
             })}
         </NavPanelStyled>
     );
