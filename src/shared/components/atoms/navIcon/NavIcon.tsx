@@ -5,7 +5,6 @@ import styled, { css } from 'styled-components';
 type SizeNavIcon = 'lg' | 'md' | 'sm';
 
 type StyledNavIconProps = {
-    $isPriming: boolean;
     $size: SizeNavIcon;
     $disabled?: boolean;
     $active?: boolean;
@@ -43,29 +42,21 @@ const NavIconStyled = styled.div<StyledNavIconProps>`
         switch ($size) {
             case 'lg':
                 return css`
-                    width: 80px;
                     padding: 14px;
                     font-size: var(--text-base);
                 `;
             case 'md':
                 return css`
-                    width: 60px;
                     padding: 12px;
                     font-size: var(--text-sm);
                 `;
             case 'sm':
                 return css`
-                    width: 50px;
                     padding: 10px;
                     font-size: var(--text-xs);
                 `;
         }
-    }} //isPriming
-    ${({ $isPriming }) =>
-        $isPriming &&
-        css`
-            background: var(--bg-secondary);
-        `} //disabled
+    }} //disabled
     ${({ $disabled }) =>
         $disabled &&
         css`
@@ -76,6 +67,7 @@ const NavIconStyled = styled.div<StyledNavIconProps>`
         $active &&
         css`
             color: var(--primary-dark);
+            background: var(--bg-secondary);
         `}
 `;
 
@@ -93,19 +85,14 @@ export const NavIcon = ({
     children,
     size = 'lg',
     onClick,
-    isPriming = false,
     disabled = false,
-    to
+    to,
 }: NavProfileProps) => {
     return (
-        <NavLink
-            to={to}
-            style={{ textDecoration: 'none' }} // убираем подчёркивание
-        >
+        <NavLink to={to}>
             {({ isActive }) => (
                 <NavIconStyled
                     $disabled={disabled}
-                    $isPriming={isPriming}
                     $active={isActive}
                     onClick={onClick}
                     $size={size}
