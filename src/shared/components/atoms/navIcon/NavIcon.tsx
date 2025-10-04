@@ -36,7 +36,7 @@ const NavIconStyled = styled.div<StyledNavIconProps>`
             }
         }};
     }
-    
+
     > span {
         text-transform: capitalize;
     }

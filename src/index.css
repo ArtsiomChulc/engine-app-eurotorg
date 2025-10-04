@@ -12,10 +12,12 @@
     --bg-primary: #ffffff;
     --bg-secondary: rgba(236, 243, 243, 0.8);
     --bg-sidebar: #1e293b;
+    --bg-input: #f6f7f8;
     /* Текст */
     --text-primary: #1e293b;
     --text-secondary: #64748b;
     --text-light: #ffffff;
+    --text-palceholder: #9ca3af;
     /*Типографика*/
     /* Шрифты */
     font-family: 'Inter', -apple-system, sans-serif;
@@ -61,4 +63,8 @@ button:active {
 a, a:active, a:focus {
     text-decoration: none;
     color: inherit;
+}
+
+input {
+    width: 100%;
 }
