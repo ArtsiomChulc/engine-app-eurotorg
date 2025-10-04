@@ -1,7 +1,6 @@
 import { NavPanel } from '@/shared/components/molecules/navPanel/NavPanel';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../index.css';
-import { CgProfile } from 'react-icons/cg';
 import { BrowserRouter } from 'react-router';
 
 const meta = {
@@ -30,7 +29,14 @@ const meta = {
     decorators: [
         Story => (
             <BrowserRouter>
-                <div style={{ minWidth: '100%' }}>
+                <div
+                    style={{
+                        minWidth: '100%',
+                        height: '100vh',
+                        display: 'flex',
+                        alignItems: 'flex-end',
+                    }}
+                >
                     <Story />
                 </div>
             </BrowserRouter>
@@ -45,11 +51,8 @@ export const NavPanelStory: Story = {
     args: {
         size: 'lg',
         to: '/object',
-        children: (
-            <>
-                <CgProfile />
-                Профиль
-            </>
-        ),
+    },
+    parameters: {
+        layout: 'fullscreen',
     },
 };

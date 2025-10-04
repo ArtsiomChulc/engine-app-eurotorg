@@ -38,11 +38,11 @@ export const NavPanel = () => {
 
     return (
         <NavPanelStyled>
-            {pathArr.map(({ icon, to }) => {
+            {pathArr.map(({ icon, to, title }) => {
                 return (
                     <NavIcon key={to} to={to} size={getSizeIcon()}>
                         {icon}
-                        Объекты
+                        <span>{title}</span>
                     </NavIcon>
                 );
             })}
