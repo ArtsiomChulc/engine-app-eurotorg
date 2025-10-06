@@ -1,17 +1,15 @@
-import {
-    BlockForm
-} from '@/shared/components/atoms/blockForm/BlockForm';
+import { BlockForm } from '@/shared/components/atoms/blockForm/BlockForm';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-type Mode = 'register' | 'login'
+type Mode = 'register' | 'login';
 
 const AuthFormWrapper = styled.div`
     width: clamp(340px, 50%, 100%);
     padding: 20px;
     background: var(--bg-primary);
     border-radius: 8px;
-`
+`;
 
 const FormTitle = styled.h1`
     text-align: center;
@@ -19,7 +17,7 @@ const FormTitle = styled.h1`
     color: var(--text-primary);
     font-size: var(--text-2xl);
     margin-bottom: 15px;
-`
+`;
 
 const FormSubTitle = styled.p`
     text-align: center;
@@ -28,7 +26,7 @@ const FormSubTitle = styled.p`
     font-size: var(--text-sm);
     margin-bottom: 25px;
     line-height: 1.5;
-`
+`;
 
 const FormSwitchText = styled.span`
     text-align: center;
@@ -36,53 +34,49 @@ const FormSwitchText = styled.span`
     color: var(--primary);
     font-size: var(--text-base);
     cursor: pointer;
-`
+`;
 
 export const AuthForm = () => {
     const [mode, setMode] = useState<Mode>('login');
 
     const getAuthMode = () => {
-        setMode(() => {
-            if (mode === 'login') {
-                return 'register'
-            } else {
-                return 'login'
-            }
-        })
-    }
+        setMode(prevMode => (prevMode === 'login' ? 'register' : 'login'));
+    };
 
     const getTitleForm = () => {
         if (mode === 'login') {
-            return 'Вход'
+            return 'Вход';
         } else {
-            return 'Регистрация'
+            return 'Регистрация';
         }
-    }
+    };
 
     const getSubTitleForm = () => {
         if (mode === 'login') {
-            return 'войдите в свой аккаунт для продолжения или'
+            return 'войдите в свой аккаунт для продолжения или';
         } else {
-            return 'зарегистрируйтесь в системе или'
+            return 'зарегистрируйтесь в системе или';
         }
-    }
+    };
 
     const getSwitchTextForm = () => {
         if (mode === 'login') {
-            return 'зарегистрируйтесь'
+            return 'зарегистрируйтесь';
         } else {
-            return 'войдите'
+            return 'войдите';
         }
-    }
+    };
 
     return (
         <AuthFormWrapper>
             <FormTitle>{getTitleForm()}</FormTitle>
             <FormSubTitle>
                 {getSubTitleForm()}{' '}
-                <FormSwitchText onClick={getAuthMode}>{getSwitchTextForm()}</FormSwitchText>
+                <FormSwitchText onClick={getAuthMode}>
+                    {getSwitchTextForm()}
+                </FormSwitchText>
             </FormSubTitle>
-            <BlockForm authMode={mode}/>
+            <BlockForm authMode={mode} />
         </AuthFormWrapper>
     );
 };
