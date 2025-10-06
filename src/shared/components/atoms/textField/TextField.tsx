@@ -33,7 +33,7 @@ const InputWrapper = styled.div<{
     border: 1px solid ${({ $error }) =>
         $error ? 'var(--error, #e53935)' : 'var(--border, #ccc)'};
     border-radius: 8px;
-    background: ${({ $disabled }) => ($disabled ? '#f5f5f5' : '#f6f7f8')};
+    background: var(--bg-secondary);
     transition: border-color 0.2s ease;
 
     &:focus-within {
@@ -46,7 +46,7 @@ const InputWrapper = styled.div<{
         border: none;
         outline: none;
         font-size: 14px;
-        background: var(--bg-input);
+        background: var(--bg-secondary);
         color: var(--text-primary, #333);
 
         &::placeholder {
