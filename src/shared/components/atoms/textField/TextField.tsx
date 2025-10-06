@@ -50,7 +50,7 @@ const InputWrapper = styled.div<{
         color: var(--text-primary, #333);
 
         &::placeholder {
-            color: var(--text-palceholder);
+            color: var(--text-placeholder);
         }
     }
 
