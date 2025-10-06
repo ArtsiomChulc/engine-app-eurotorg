@@ -20,22 +20,18 @@ export const BlockForm = ({ authMode }: BlockFormProps) => {
     const [showPassword, setShowPassword] = useState<string>('text');
 
     const showPasswordHandler = () => {
-        setShowPassword(() => {
-            if (showPassword === 'text') {
-                return 'password'
-            } else {
-                return 'text'
-            }
-        })
-    }
+        setShowPassword(prevState =>
+            prevState === 'text' ? 'password' : 'text'
+        );
+    };
 
     const getIconForField = (): ReactNode => {
         if (showPassword === 'text') {
-            return <FaRegEyeSlash onClick={showPasswordHandler} />
+            return <FaEye onClick={showPasswordHandler} />;
         } else {
-            return <FaEye onClick={showPasswordHandler} />
+            return <FaRegEyeSlash onClick={showPasswordHandler} />;
         }
-    }
+    };
 
     return (
         <BlockFormStyled>
