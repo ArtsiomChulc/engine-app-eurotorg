@@ -30,10 +30,15 @@ const FormSubTitle = styled.p`
 
 const FormSwitchText = styled.span`
     text-align: center;
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: var(--primary);
     font-size: var(--text-base);
     cursor: pointer;
+    transition: color .2s ease-in-out;
+    
+    &:hover {
+        color: var(--primary-hover);
+    }
 `;
 
 export const AuthForm = () => {
