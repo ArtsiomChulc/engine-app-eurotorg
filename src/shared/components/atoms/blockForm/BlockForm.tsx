@@ -5,14 +5,10 @@ import { FaRegEyeSlash, FaEye } from 'react-icons/fa';
 import styled from 'styled-components';
 
 type BlockFormProps = {
-    authMode: 'register' | 'login';
+    authMode: string;
 };
 
 const BlockFormStyled = styled.div`
-    width: clamp(340px, 50%, 100%);
-    padding: 20px;
-    background: var(--bg-primary);
-    border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,10 +17,10 @@ const BlockFormStyled = styled.div`
 `;
 
 export const BlockForm = ({ authMode }: BlockFormProps) => {
-    const [showPassword, getShowPassword] = useState<string>('text');
+    const [showPassword, setShowPassword] = useState<string>('text');
 
     const showPasswordHandler = () => {
-        getShowPassword(() => {
+        setShowPassword(() => {
             if (showPassword === 'text') {
                 return 'password'
             } else {
