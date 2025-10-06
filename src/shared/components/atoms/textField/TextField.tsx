@@ -18,20 +18,20 @@ const Wrapper = styled.div<{ $fullWidth?: boolean }>`
 const Label = styled.label`
     font-size: 14px;
     font-weight: 500;
-    color: var(--text-primary, #333);
+    color: var(--text-secondary);
 `;
 
 const InputWrapper = styled.div<{
     $error?: boolean;
     $disabled?: boolean;
+    $icon?: ReactNode;
 }>`
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 10px 12px;
-    border: 1px solid
-        ${({ $error }) =>
-            $error ? 'var(--error, #e53935)' : 'var(--border, #ccc)'};
+    border: 1px solid ${({ $error }) =>
+        $error ? 'var(--error, #e53935)' : 'var(--border, #ccc)'};
     border-radius: 8px;
     background: ${({ $disabled }) => ($disabled ? '#f5f5f5' : '#f6f7f8')};
     transition: border-color 0.2s ease;
@@ -64,7 +64,25 @@ const InputWrapper = styled.div<{
                 cursor: not-allowed;
             }
         `}
-`;
+    
+    ${({$icon}) => {
+        if ($icon) {
+            return css `
+                display: flex;
+                align-items: center;
+                flex-direction: row-reverse;
+
+                svg {
+                    cursor: pointer;
+                }
+
+                input {
+                    padding-right: 20px;
+                }
+            `
+        }
+    }}
+    `;
 
 const ErrorText = styled.span`
     font-size: 12px;
@@ -72,17 +90,18 @@ const ErrorText = styled.span`
 `;
 
 export const TextField = ({
-    label,
-    error,
-    fullWidth,
-    icon,
-    disabled,
-    ...props
-}: TextFieldProps) => {
+                              label,
+                              error,
+                              fullWidth,
+                              icon,
+                              disabled,
+                              ...props
+                          }: TextFieldProps) => {
     return (
         <Wrapper $fullWidth={fullWidth}>
             {label && <Label>{label}</Label>}
-            <InputWrapper $error={!!error} $disabled={disabled}>
+            <InputWrapper $error={!!error} $disabled={disabled}
+                          $icon={icon}>
                 {icon && icon}
                 <input disabled={disabled} {...props} />
             </InputWrapper>
