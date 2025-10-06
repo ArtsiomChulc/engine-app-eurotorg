@@ -1,6 +1,7 @@
 :root {
     /* Основные цвета */
     --primary: #2563eb; /* Синий - основные кнопки */
+    --primary-hover: rgba(37, 99, 235, 0.7);
     --primary-dark: #1d4ed8;
     --secondary: #64748b; /* Серый - второстепенные элементы */
     --line-decor: #ebe9ef; /* Серый - для декора */
@@ -9,10 +10,9 @@
     --error: #ef4444; /* Красный - ошибки */
 
     /* Фоны */
-    --bg-primary: #ffffff;
-    --bg-secondary: rgba(236, 243, 243, 0.8);
+    --bg-primary: #f6f7f8;
+    --bg-secondary: #fff;
     --bg-sidebar: #1e293b;
-    --bg-input: #f6f7f8;
     /* Текст */
     --text-primary: #1e293b;
     --text-secondary: #64748b;
@@ -42,6 +42,7 @@ body {
     width: 100%;
     min-width: 320px;
     min-height: 100vh;
+    background: var(--bg-primary);
 }
 
 button {
