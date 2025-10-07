@@ -1,6 +1,4 @@
-import {
-    BlockFormStyled
-} from '@/shared/components/atoms/blockForm/BlockForm';
+import { BlockFormStyled } from '@/shared/components/atoms/blockForm/BlockForm';
 import { Button } from '@/shared/components/atoms/button/Button';
 import { Select } from '@/shared/components/atoms/select/Select';
 import { TextField } from '@/shared/components/atoms/textField/TextField';
