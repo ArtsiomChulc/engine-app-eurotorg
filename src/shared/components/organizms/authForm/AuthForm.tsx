@@ -1,8 +1,23 @@
-import { BlockForm } from '@/shared/components/atoms/blockForm/BlockForm';
-import { useState } from 'react';
+import { LoginForm } from '@/shared/components/molecules/loginForm/LoginForm';
+import { RegisterForm } from '@/shared/components/molecules/registerForm/RegisterForm';
+import { useState, ReactNode } from 'react';
+import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
 import styled from 'styled-components';
 
 type Mode = 'register' | 'login';
+
+export type InputsLogin = {
+    email: string;
+    password: string;
+};
+
+export type InputsRegister = {
+    name: string;
+    surname: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+};
 
 const AuthFormWrapper = styled.div`
     width: clamp(340px, 50%, 100%);
@@ -34,8 +49,8 @@ const FormSwitchText = styled.span`
     color: var(--primary);
     font-size: var(--text-base);
     cursor: pointer;
-    transition: color .2s ease-in-out;
-    
+    transition: color 0.2s ease-in-out;
+
     &:hover {
         color: var(--primary-hover);
     }
@@ -43,6 +58,21 @@ const FormSwitchText = styled.span`
 
 export const AuthForm = () => {
     const [mode, setMode] = useState<Mode>('login');
+    const [showPassword, setShowPassword] = useState<string>('password');
+
+    const showPasswordHandler = () => {
+        setShowPassword(prevState =>
+            prevState === 'text' ? 'password' : 'text'
+        );
+    };
+
+    const getIconForField = (): ReactNode => {
+        if (showPassword === 'text') {
+            return <FaEye onClick={showPasswordHandler} />;
+        } else {
+            return <FaRegEyeSlash onClick={showPasswordHandler} />;
+        }
+    };
 
     const getAuthMode = () => {
         setMode(prevMode => (prevMode === 'login' ? 'register' : 'login'));
@@ -81,7 +111,17 @@ export const AuthForm = () => {
                     {getSwitchTextForm()}
                 </FormSwitchText>
             </FormSubTitle>
-            <BlockForm authMode={mode} />
+            {mode === 'login' ? (
+                <LoginForm
+                    getIconForField={getIconForField}
+                    showPassword={showPassword}
+                />
+            ) : (
+                <RegisterForm
+                    showPassword={showPassword}
+                    getIconForField={getIconForField}
+                />
+            )}
         </AuthFormWrapper>
     );
 };

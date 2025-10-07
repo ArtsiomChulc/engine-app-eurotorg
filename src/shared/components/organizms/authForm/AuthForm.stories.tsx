@@ -30,9 +30,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const AuthFormStory: Story = {
-    args: {
-        authMode: 'register',
-    },
+    args: {},
     parameters: {
         layout: 'fullscreen',
     },

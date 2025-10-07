@@ -1,42 +1,63 @@
-// schemaValidation.ts
 import { z } from 'zod';
 
 export const loginSchema = z.object({
     email: z
         .string()
+        .trim()
         .min(1, 'Email обязателен')
         .email('Некорректный email адрес'),
     password: z
         .string()
-        .min(1, 'Пароль обязателен')
-});
-
-export const registerSchema = z.object({
-    name: z
-        .string()
-        .min(1, 'Имя обязательно')
-        .min(2, 'Минимум 2 символа')
-        .regex(/^[a-zA-Zа-яА-ЯёЁ\s-]+$/, 'Только буквы и дефисы'),
-    surname: z
-        .string()
-        .min(1, 'Фамилия обязательна')
-        .min(2, 'Минимум 2 символа')
-        .regex(/^[a-zA-Zа-яА-ЯёЁ\s-]+$/, 'Только буквы и дефисы'),
-    email: z
-        .string()
-        .min(1, 'Email обязателен')
-        .email('Некорректный email адрес'),
-    password: z
-        .string()
-        .min(6, 'Минимум 6 символов')
+        .trim()
+        .min(6, 'Пароль должен содержать минимум 6 символов')
+        .max(50, 'Пароль не должен превышать 50 символов')
         .regex(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-            'Пароль должен содержать заглавную, строчную букву и цифру'
+            'Пароль должен содержать хотя бы одну заглавную букву, одну строчную букву и одну цифру'
         ),
-    confirmPassword: z
-        .string()
-        .min(1, 'Подтвердите пароль'),
-}).refine((data) => data.password === data.confirmPassword, {
-    message: 'Пароли не совпадают',
-    path: ['confirmPassword'],
 });
+
+export const registerSchema = z
+    .object({
+        name: z
+            .string()
+            .trim()
+            .min(2, 'Имя должно содержать минимум 2 символа')
+            .max(50, 'Имя не должно превышать 50 символов')
+            .regex(
+                /^[a-zA-Zа-яА-ЯёЁ\s-]+$/,
+                'Имя может содержать только буквы и дефисы'
+            ),
+
+        surname: z
+            .string()
+            .trim()
+            .min(2, 'Фамилия должна содержать минимум 2 символа')
+            .max(50, 'Фамилия не должна превышать 50 символов')
+            .regex(
+                /^[a-zA-Zа-яА-ЯёЁ\s-]+$/,
+                'Фамилия может содержать только буквы и дефисы'
+            ),
+
+        email: z
+            .string()
+            .trim()
+            .min(1, 'Email обязателен')
+            .email('Некорректный email адрес'),
+
+        password: z
+            .string()
+            .trim()
+            .min(6, 'Пароль должен содержать минимум 6 символов')
+            .max(50, 'Пароль не должен превышать 50 символов')
+            .regex(
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+                'Пароль должен содержать хотя бы одну заглавную букву, одну строчную букву и одну цифру'
+            ),
+
+        confirmPassword: z.string().trim().min(1, 'Подтвердите пароль'),
+    })
+    .refine(data => data.password === data.confirmPassword, {
+        message: 'Пароли не совпадают',
+        path: ['confirmPassword'], // Ошибка будет отображаться именно на этом поле
+    });
