@@ -1,3 +1,5 @@
+import { Label } from '@/shared/components/atoms/label/Label';
+import { Wrapper } from '@/shared/components/atoms/wrapper/Wrapper';
 import { InputHTMLAttributes, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
@@ -8,19 +10,6 @@ type TextFieldProps = {
     fullWidth?: boolean;
     icon?: ReactNode;
 } & InputHTMLAttributes<HTMLInputElement>;
-
-const Wrapper = styled.div<{ $fullWidth?: boolean }>`
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    width: ${({ $fullWidth }) => ($fullWidth ? '100%' : '280px')};
-`;
-
-const Label = styled.label`
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-secondary);
-`;
 
 const InputWrapper = styled.div<{
     $error?: boolean;
@@ -33,7 +22,7 @@ const InputWrapper = styled.div<{
     padding: 10px 12px;
     border: 1px solid
         ${({ $error }) =>
-            $error ? 'var(--error, #e53935)' : 'var(--border, #ccc)'};
+            $error ? 'var(--error, #e53935)' : 'var(--line-decor,' + ' #ccc)'};
     border-radius: 8px;
     background: var(--bg-secondary);
     transition: border-color 0.2s ease;

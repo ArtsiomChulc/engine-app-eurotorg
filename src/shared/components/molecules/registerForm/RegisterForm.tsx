@@ -2,6 +2,7 @@ import {
     BlockFormStyled
 } from '@/shared/components/atoms/blockForm/BlockForm';
 import { Button } from '@/shared/components/atoms/button/Button';
+import { Select } from '@/shared/components/atoms/select/Select';
 import { TextField } from '@/shared/components/atoms/textField/TextField';
 import { InputsRegister } from '@/shared/components/organizms/authForm/AuthForm';
 import { registerSchema } from '@/shared/validate/schemaValidation';
@@ -46,6 +47,7 @@ export const RegisterForm = ({
                 name={'surname'}
                 error={errors?.surname?.message}
             />
+            <Select />
             <TextField
                 fullWidth
                 label={'Электронная почта'}
