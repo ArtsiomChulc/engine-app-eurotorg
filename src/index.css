@@ -75,3 +75,7 @@ input:-webkit-autofill {
     -webkit-text-fill-color: #000;
     transition: background-color 5000s ease-in-out 0s;
 }
+
+ul {
+    list-style: none;
+}
