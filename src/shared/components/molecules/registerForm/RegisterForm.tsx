@@ -19,7 +19,7 @@ type BlockFormProps = {
 // mock!!todo
 export const mockOptions: OptionType[] = [
     { region: 'Витебский', id: 'asd' },
-    { region: 'Орщанский', id: 'sss' },
+    { region: 'Оршанский', id: 'sss' },
     { region: 'Полоцкий', id: 'qqq' },
 ];
 
