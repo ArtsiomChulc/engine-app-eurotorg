@@ -79,7 +79,7 @@ const SelectStyled = styled.div<{
         `}
 `;
 
-const OptionsWrapper = styled.ul<{ isOpen: boolean }>`
+const OptionsWrapper = styled.ul<{ $isOpen: boolean }>`
     width: 100%;
     min-height: 140px;
     padding: 10px 12px;
@@ -97,17 +97,17 @@ const OptionsWrapper = styled.ul<{ isOpen: boolean }>`
     left: 0;
     right: 0;
     z-index: 10;
-    animation: ${({ isOpen }) => (isOpen ? slideDown : slideUp)} 0.3s ease
+    animation: ${({ $isOpen }) => ($isOpen ? slideDown : slideUp)} 0.3s ease
         forwards;
 
-    ${({ isOpen }) =>
-        !isOpen &&
+    ${({ $isOpen }) =>
+        !$isOpen &&
         css`
             pointer-events: none;
         `}
 `;
 
-const OptionStyled = styled.li<{ isSelected: boolean }>`
+const OptionStyled = styled.li<{ $isSelected: boolean }>`
     font-size: var(--text-sm);
     width: 100%;
     padding: 10px;
@@ -117,8 +117,8 @@ const OptionStyled = styled.li<{ isSelected: boolean }>`
         background: var(--secondary);
     }
 
-    ${({ isSelected }) =>
-        isSelected &&
+    ${({ $isSelected }) =>
+        $isSelected &&
         css`
             background: var(--bg-sidebar);
             color: var(--text-light);
@@ -128,11 +128,11 @@ const OptionStyled = styled.li<{ isSelected: boolean }>`
         `}
 `;
 
-const Placeholder = styled.span<{ hasValue: boolean }>`
+const Placeholder = styled.span<{ $hasValue: boolean }>`
     color: var(--text-placeholder);
 
-    ${hasValue =>
-        hasValue &&
+    ${$hasValue =>
+        $hasValue &&
         css`
             color: var(--text-primary);
         `}
@@ -177,7 +177,7 @@ export const Select = ({
             <Label>{label}</Label>
             <SelectStyled $disabled={disabled} onClick={handleToggle}>
                 {options ? (
-                    <Placeholder hasValue={!!displayValue}>
+                    <Placeholder $hasValue={!!displayValue}>
                         {displayValue || placeholder}
                     </Placeholder>
                 ) : (
@@ -185,11 +185,11 @@ export const Select = ({
                 )}
                 {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
             </SelectStyled>
-            <OptionsWrapper isOpen={isOpen}>
+            <OptionsWrapper $isOpen={isOpen}>
                 {options.map(({ region, id }) => {
                     return (
                         <OptionStyled
-                            isSelected={region === selectedOption?.region}
+                            $isSelected={region === selectedOption?.region}
                             key={id}
                             onClick={() =>
                                 handleSelect({
