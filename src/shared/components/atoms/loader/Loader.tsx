@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 const moveX  = keyframes `
     0% {
-        top: 0% ;
+        top: 0 ;
         transform: translateX(-50%) scale(1.5);
     }
     50% {
