@@ -1,7 +1,9 @@
 import {
     Select,
-    mockOptions,
 } from '@/shared/components/atoms/select/Select';
+import {
+    mockOptions
+} from '@/shared/components/molecules/registerForm/RegisterForm';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../index.css';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -20,7 +22,7 @@ const meta = {
     },
     decorators: [
         Story => (
-            <div style={{ minWidth: '100%' }}>
+            <div style={{ minWidth: '360px', width: '100%' }}>
                 <Story />
             </div>
         ),
@@ -33,6 +35,14 @@ type Story = StoryObj<typeof meta>;
 export const SelectStory: Story = {
     args: {
         options: mockOptions,
+        icon: <IoIosArrowDown/>
+    },
+};
+
+export const SelectDisabledStory: Story = {
+    args: {
+        options: mockOptions,
+        disabled: true,
         icon: <IoIosArrowDown/>
     },
 };
