@@ -6,6 +6,7 @@ import { useClickOutside } from '@/shared/hooks/useClickOutside';
 import { ReactNode, useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
+import { MdHourglassDisabled } from 'react-icons/md';
 import styled, { css, keyframes } from 'styled-components';
 
 export type OptionType = {
@@ -67,7 +68,7 @@ const SelectStyled = styled.div<{
     background: var(--bg-secondary);
     position: relative;
     cursor: pointer;
-    
+
     span {
         max-width: 720px;
         overflow: hidden;
@@ -84,6 +85,7 @@ const SelectStyled = styled.div<{
         css`
             cursor: not-allowed;
             opacity: 0.7;
+            pointer-events: none;
         `}
 `;
 
@@ -94,7 +96,7 @@ const OptionsWrapper = styled.ul<{ $isOpen: boolean }>`
     background: var(--bg-secondary);
     border: 1px solid var(--line-decor);
     border-radius: 8px;
-    display: ${({$isOpen}) => $isOpen ? 'flex' : 'none'};
+    display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
@@ -181,6 +183,11 @@ export const Select = ({
         }
     };
 
+    const getIcon = () => {
+        if (disabled) return <MdHourglassDisabled />;
+        return isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />;
+    };
+
     const displayValue = selectedOption ? selectedOption.region : '';
 
     return (
@@ -199,7 +206,7 @@ export const Select = ({
                 ) : (
                     'Ошибка загрузки данных'
                 )}
-                {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                {getIcon()}
             </SelectStyled>
             <OptionsWrapper $isOpen={isOpen}>
                 {options.map(({ region, id }) => {
