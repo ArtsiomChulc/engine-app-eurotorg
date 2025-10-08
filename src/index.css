@@ -4,6 +4,7 @@
     --primary-hover: rgba(37, 99, 235, 0.7);
     --primary-dark: #1d4ed8;
     --secondary: #64748b; /* Серый - второстепенные элементы */
+    --hover: #ecedf4;
     --line-decor: #ebe9ef; /* Серый - для декора */
     --success: #10b981; /* Зеленый - успешные действия */
     --warning: #f59e0b; /* Желтый - предупреждения */
