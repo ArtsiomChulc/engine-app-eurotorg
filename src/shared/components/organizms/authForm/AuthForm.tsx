@@ -15,6 +15,7 @@ export type InputsRegister = {
     name: string;
     surname: string;
     email: string;
+    selectRegion: string;
     password: string;
     confirmPassword: string;
 };

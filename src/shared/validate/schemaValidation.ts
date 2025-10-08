@@ -45,6 +45,9 @@ export const registerSchema = z
             .min(1, 'Email обязателен')
             .email('Некорректный email адрес'),
 
+        selectRegion: z
+            .string(),
+
         password: z
             .string()
             .trim()

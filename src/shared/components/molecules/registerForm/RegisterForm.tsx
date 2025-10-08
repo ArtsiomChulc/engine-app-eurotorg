@@ -1,6 +1,9 @@
 import { BlockFormStyled } from '@/shared/components/atoms/blockForm/BlockForm';
 import { Button } from '@/shared/components/atoms/button/Button';
-import { Select } from '@/shared/components/atoms/select/Select';
+import {
+    Select,
+    OptionType,
+} from '@/shared/components/atoms/select/Select';
 import { TextField } from '@/shared/components/atoms/textField/TextField';
 import { InputsRegister } from '@/shared/components/organizms/authForm/AuthForm';
 import { registerSchema } from '@/shared/validate/schemaValidation';
@@ -13,6 +16,13 @@ type BlockFormProps = {
     getIconForField: () => ReactNode;
 };
 
+// mock!!todo
+export const mockOptions: OptionType[] = [
+    { region: 'Витебский', id: 'asd' },
+    { region: 'Орщанский', id: 'sss' },
+    { region: 'Полоцкий', id: 'qqq' },
+];
+
 export const RegisterForm = ({
     showPassword,
     getIconForField,
@@ -20,11 +30,18 @@ export const RegisterForm = ({
     const {
         handleSubmit,
         register,
+        setValue,
         formState: { errors },
     } = useForm<InputsRegister>({
         resolver: zodResolver(registerSchema),
         mode: 'onChange',
     });
+
+    const handleRegionChange = (option: OptionType | null) => {
+        setValue('selectRegion', option?.region || '');
+        console.log('Region selected:', option);
+    };
+
     const onSubmit: SubmitHandler<InputsRegister> = data =>
         console.log(data, errors);
     return (
@@ -45,7 +62,7 @@ export const RegisterForm = ({
                 name={'surname'}
                 error={errors?.surname?.message}
             />
-            <Select />
+            <Select options={mockOptions} register={register} onChange={handleRegionChange} />
             <TextField
                 fullWidth
                 label={'Электронная почта'}
