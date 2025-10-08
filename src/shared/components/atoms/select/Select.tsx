@@ -2,6 +2,7 @@ import { HideInput } from '@/shared/components/atoms/hiddenRegisterInput/HideInp
 import { Label } from '@/shared/components/atoms/label/Label';
 import { Wrapper } from '@/shared/components/atoms/wrapper/Wrapper';
 import { InputsRegister } from '@/shared/components/organizms/authForm/AuthForm';
+import { useClickOutside } from '@/shared/hooks/useClickOutside';
 import { ReactNode, useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
@@ -66,6 +67,13 @@ const SelectStyled = styled.div<{
     background: var(--bg-secondary);
     position: relative;
     cursor: pointer;
+    
+    span {
+        max-width: 720px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 
     svg {
         cursor: pointer;
@@ -86,7 +94,7 @@ const OptionsWrapper = styled.ul<{ $isOpen: boolean }>`
     background: var(--bg-secondary);
     border: 1px solid var(--line-decor);
     border-radius: 8px;
-    display: flex;
+    display: ${({$isOpen}) => $isOpen ? 'flex' : 'none'};
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
@@ -112,17 +120,23 @@ const OptionStyled = styled.li<{ $isSelected: boolean }>`
     width: 100%;
     padding: 10px;
     cursor: pointer;
+    overflow: hidden;
+    max-width: 720px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     &:hover {
-        background: var(--secondary);
+        background: var(--hover);
     }
 
     ${({ $isSelected }) =>
         $isSelected &&
         css`
-            background: var(--bg-sidebar);
+            background: var(--text-secondary);
             color: var(--text-light);
-            padding: 5px 10px;
+            padding-inline: 10px;
+            padding-left: 25px;
+            padding-right: 12px;
             width: 100%;
             border-radius: 4px;
         `}
@@ -153,6 +167,8 @@ export const Select = ({
         value || null
     );
 
+    const ref = useClickOutside<HTMLDivElement>(() => setIsOpen(false));
+
     const handleToggle = () => {
         setIsOpen(!isOpen);
     };
@@ -168,7 +184,7 @@ export const Select = ({
     const displayValue = selectedOption ? selectedOption.region : '';
 
     return (
-        <Wrapper>
+        <Wrapper ref={ref}>
             <HideInput
                 value={selectedOption ? selectedOption.region : ''}
                 name={name}
