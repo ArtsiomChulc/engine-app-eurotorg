@@ -1,6 +1,7 @@
+import { Skeleton } from '@/shared/components/atoms/skeleton/Skeleton';
 import { ReactNode } from 'react';
 import { NavLink } from 'react-router';
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 type BlockInfoProps = {
     to?: string;
@@ -11,47 +12,18 @@ type BlockInfoProps = {
     error?: boolean;
 };
 
-const shimmer = keyframes`
-    0% {
-        background-position: 100% 100%;
-    }
-    100% {
-        background-position: 0 0;
-    }
-`;
-
 const BlockInfoStyled = styled.div<{
-    $isLoading: boolean;
     $error: boolean;
 }>`
     background: var(--bg-secondary);
     border-radius: 12px;
-    width: 258px;
+    width: 260px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-
-    ${({ $isLoading }) => {
-        if ($isLoading) {
-            return css`
-                background: linear-gradient(
-                    90deg,
-                    #ededed 30%,
-                    #dcdcdc 50%,
-                    #ededed 70%
-                );
-                background-size: 400%;
-                animation: ${shimmer} 1.5s infinite linear;
-                cursor: not-allowed;
-
-                div svg {
-                    display: none;
-                }
-            `;
-        }
-    }}
 `;
 
 const IconBlockWrapper = styled.div<{ $isLoading: boolean }>`
@@ -98,14 +70,20 @@ export const BlockInfo = ({
 }: BlockInfoProps) => {
     return (
         <NavLink to={to ? to : ''}>
-            <BlockInfoStyled $isLoading={isLoading} $error={error}>
-                <IconBlockWrapper $isLoading={isLoading}>
-                    {icon}
-                </IconBlockWrapper>
-                <TextBlockWrapper>
-                    <TextBlockTitle>{title}</TextBlockTitle>
-                    <TextBlockDesc>{description}</TextBlockDesc>
-                </TextBlockWrapper>
+            <BlockInfoStyled $error={error}>
+                {isLoading ? (
+                    <Skeleton />
+                ) : (
+                    <>
+                        <IconBlockWrapper $isLoading={isLoading}>
+                            {icon}
+                        </IconBlockWrapper>
+                        <TextBlockWrapper>
+                            <TextBlockTitle>{title}</TextBlockTitle>
+                            <TextBlockDesc>{description}</TextBlockDesc>
+                        </TextBlockWrapper>
+                    </>
+                )}
             </BlockInfoStyled>
         </NavLink>
     );
