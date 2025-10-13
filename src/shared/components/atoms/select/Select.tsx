@@ -103,7 +103,7 @@ const OptionsWrapper = styled.ul<{ $isOpen: boolean }>`
     gap: 8px;
     overflow: hidden;
     position: absolute;
-    top: 100%;
+    top: 125%;
     left: 0;
     right: 0;
     z-index: 10;
