@@ -44,6 +44,7 @@ const BlockInfoStyled = styled.div<{
                 );
                 background-size: 400%;
                 animation: ${shimmer} 1.5s infinite linear;
+                cursor: not-allowed;
 
                 div svg {
                     display: none;
