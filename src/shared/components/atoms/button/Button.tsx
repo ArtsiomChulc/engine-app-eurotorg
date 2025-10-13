@@ -1,3 +1,4 @@
+import { Spinner } from '@/shared/components/atoms/spiner/Spinner';
 import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
@@ -21,22 +22,21 @@ const ButtonStyled = styled.button<StyledButtonProps>`
         switch ($size) {
             case 'lg':
                 return css`
-                    padding: 15px;
+                    width: 200px;
                     font-size: var(--text-lg);
                 `;
             case 'md':
                 return css`
-                    padding: 12px;
+                    width: 160px;
                     font-size: var(--text-base);
                 `;
             case 'sm':
                 return css`
-                    padding: 10px;
+                    width: 130px;
                     font-size: var(--text-sm);
                 `;
             default:
                 return css`
-                    padding: 12px;
                     font-size: var(--text-base);
                 `;
         }
@@ -79,6 +79,7 @@ type ButtonProps = {
     variant?: ButtonVariant;
     size?: ButtonSize;
     fullWidth?: boolean;
+    isLoading?: boolean;
     disabled?: boolean;
     onClick?: () => void;
     type?: 'button' | 'submit';
@@ -91,6 +92,7 @@ export const Button = ({
     className,
     onClick,
     disabled,
+    isLoading = false,
     variant = 'primary',
     fullWidth = false,
     size = 'md',
@@ -105,7 +107,7 @@ export const Button = ({
             className={className}
             onClick={onClick}
         >
-            {children}
+            {!isLoading ? children : <Spinner/>}
         </ButtonStyled>
     );
 };

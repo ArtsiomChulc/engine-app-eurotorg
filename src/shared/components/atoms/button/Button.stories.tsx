@@ -25,6 +25,9 @@ const meta = {
         disabled: {
             control: 'boolean',
         },
+        isLoading: {
+            control: 'boolean',
+        },
         onClick: { action: 'clicked' },
     },
     decorators: [
@@ -93,6 +96,14 @@ export const FullWidth: Story = {
     },
     parameters: {
         layout: 'fullscreen',
+    },
+};
+
+export const IsLoading: Story = {
+    args: {
+        isLoading: true,
+        children: 'Disabled Button',
+        type: 'button',
     },
 };
 
