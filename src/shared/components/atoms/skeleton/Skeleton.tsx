@@ -1,4 +1,8 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
+
+type SkeletonProps = {
+    isOverall?: boolean
+}
 
 const shimmer = keyframes`
     0% {
@@ -9,9 +13,9 @@ const shimmer = keyframes`
     }
 `;
 
-const SkeletonStyled = styled.div`
+const SkeletonStyled = styled.div<{$isOverall?: boolean}>`
     width: 100%;
-    height: 100%;
+    height: ${({$isOverall}) => $isOverall ? '80px' : '100%'};
     background: linear-gradient(
         90deg,
         #ededed 30%,
@@ -25,10 +29,14 @@ const SkeletonStyled = styled.div`
     div svg {
         display: none;
     }
+    
+    ${({$isOverall}) => $isOverall && css`
+        border-radius: 8px;
+    `}
 `
 
-export const Skeleton = () => {
+export const Skeleton = ({isOverall = false}: SkeletonProps) => {
     return (
-        <SkeletonStyled/>
+        <SkeletonStyled $isOverall={isOverall}/>
     );
 };
