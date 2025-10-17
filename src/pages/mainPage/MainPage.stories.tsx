@@ -1,5 +1,4 @@
 import { MainPage } from '@/pages/mainPage/MainPage';
-import { NavPanel } from '@/shared/components/molecules/navPanel/NavPanel';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../index.css';
 
