@@ -1,10 +1,10 @@
 import { AuthForm } from '@/shared/components/organizms/authForm/AuthForm';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import '../../../../index.css';
+import '../../index.css';
 
 const meta = {
     component: AuthForm,
-    title: 'UI/AuthForm',
+    title: 'UI/Pages/AuthPage',
     parameters: {
         layout: 'fullscreen',
     },
@@ -15,6 +15,7 @@ const meta = {
             <div
                 style={{
                     minWidth: '100%',
+                    height: '100vh',
                     background: '#f6f7f8',
                     margin: '0 auto',
                     padding: 10,
