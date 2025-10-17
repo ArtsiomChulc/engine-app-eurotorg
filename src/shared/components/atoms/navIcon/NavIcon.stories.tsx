@@ -4,7 +4,6 @@ import '../../../../index.css';
 import { BiObjectsHorizontalLeft } from 'react-icons/bi';
 import { CgProfile } from 'react-icons/cg';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-import { BrowserRouter } from 'react-router';
 
 const meta = {
     component: NavIcon,
@@ -28,11 +27,9 @@ const meta = {
     },
     decorators: [
         Story => (
-            <BrowserRouter>
-                <div style={{ minWidth: '100%' }}>
-                    <Story />
-                </div>
-            </BrowserRouter>
+            <div style={{ minWidth: '100%' }}>
+                <Story />
+            </div>
         ),
     ],
 } satisfies Meta<typeof NavIcon>;

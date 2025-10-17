@@ -1,7 +1,6 @@
+import exampleImg from '@/assets/example.jpg';
 import { Image } from '@/shared/components/atoms/image/Image';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { BrowserRouter } from 'react-router';
-import exampleImg from '@/assets/example.jpg'
 import '../../../../index.css';
 
 const meta = {
@@ -14,11 +13,9 @@ const meta = {
     argTypes: {},
     decorators: [
         Story => (
-            <BrowserRouter>
-                <div style={{ width: '100%' }}>
-                    <Story />
-                </div>
-            </BrowserRouter>
+            <div style={{ width: '100%' }}>
+                <Story />
+            </div>
         ),
     ],
 } satisfies Meta<typeof Image>;

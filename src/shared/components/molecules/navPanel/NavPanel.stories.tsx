@@ -1,7 +1,6 @@
 import { NavPanel } from '@/shared/components/molecules/navPanel/NavPanel';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../index.css';
-import { BrowserRouter } from 'react-router';
 
 const meta = {
     component: NavPanel,
@@ -28,18 +27,16 @@ const meta = {
     },
     decorators: [
         Story => (
-            <BrowserRouter>
-                <div
-                    style={{
-                        minWidth: '100%',
-                        height: '100vh',
-                        display: 'flex',
-                        alignItems: 'flex-end',
-                    }}
-                >
-                    <Story />
-                </div>
-            </BrowserRouter>
+            <div
+                style={{
+                    minWidth: '100%',
+                    height: '100vh',
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                }}
+            >
+                <Story />
+            </div>
         ),
     ],
 } satisfies Meta<typeof NavPanel>;
