@@ -15,7 +15,7 @@ type BlockInfoProps = {
 const BlockInfoStyled = styled.div<{
     $error: boolean;
 }>`
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     border-radius: 12px;
     width: 260px;
     height: 350px;
@@ -69,8 +69,8 @@ export const BlockInfo = ({
     isLoading = false,
 }: BlockInfoProps) => {
     return (
-        <NavLink to={to ? to : ''}>
-            <BlockInfoStyled $error={error}>
+        <BlockInfoStyled $error={error}>
+            <NavLink to={to ? to : ''}>
                 {isLoading ? (
                     <Skeleton />
                 ) : (
@@ -84,7 +84,7 @@ export const BlockInfo = ({
                         </TextBlockWrapper>
                     </>
                 )}
-            </BlockInfoStyled>
-        </NavLink>
+            </NavLink>
+        </BlockInfoStyled>
     );
 };
