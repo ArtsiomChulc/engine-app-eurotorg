@@ -13,12 +13,12 @@
     --base-color: #263238; /*spinner*/
 
     /* Фоны */
-    --bg-primary: #f6f7f8;
-    --bg-secondary: #fff;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f6f7f8;
     --bg-sidebar: #1e293b;
     /* Текст */
     --text-primary: #1e293b;
-    --text-secondary: #64748b;
+    --text-secondary: #666;
     --text-light: #ffffff;
     --text-placeholder: #9ca3af;
     /*Типографика*/
