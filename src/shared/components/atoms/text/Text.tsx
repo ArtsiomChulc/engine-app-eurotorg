@@ -6,6 +6,7 @@ type TextProps = {
     color?: 'primary' | 'secondary' | 'light' | 'placeholder';
     variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span';
     weight?: 'normal' | 'medium' | 'bold';
+    position?: 'left' | 'center' | 'right'
     children: ReactNode;
 };
 
@@ -13,6 +14,7 @@ const TextStyled = styled.p<{
     $size: TextProps['size'];
     $color: TextProps['color'];
     $weight: TextProps['weight'];
+    $position: TextProps['position'];
 }>`
     ${({ $size }) => {
         switch ($size) {
@@ -80,6 +82,23 @@ const TextStyled = styled.p<{
         `;
         }
     }}
+
+    ${({ $position }) => {
+        switch ($position) {
+            case 'right':
+                return css`
+          text-align: right;
+        `;
+            case 'left':
+                return css`
+          text-align: left;
+        `;
+            default:
+                return css`
+          text-align: center;
+        `;
+        }
+    }}
 `;
 
 export const Text = ({
@@ -87,10 +106,11 @@ export const Text = ({
     color = 'primary',
     variant = 'p',
     weight = 'normal',
+    position = 'center',
     children,
 }: TextProps) => {
     return (
-        <TextStyled as={variant} $size={size} $color={color} $weight={weight}>
+        <TextStyled as={variant} $size={size} $color={color} $weight={weight} $position={position}>
             {children}
         </TextStyled>
     );
