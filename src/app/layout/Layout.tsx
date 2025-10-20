@@ -18,13 +18,17 @@ const Wrapper = styled.div`
 const NavPanelContainer = styled.div`
     display: flex;
     flex: 1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 `;
 
 const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 `;
 
 export const Layout = ({ children }: LayoutProps) => {
