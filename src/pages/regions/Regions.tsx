@@ -1,0 +1,41 @@
+import {
+    regionsPageData
+} from '@/pages/regions/schemas/regionsPageData';
+import {
+    SelectionItem
+} from '@/shared/components/atoms/selectionItem/SelectionItem';
+import { Text } from '@/shared/components/atoms/text/Text';
+import {
+    TextField
+} from '@/shared/components/atoms/textField/TextField';
+import styled from 'styled-components';
+
+const RegionsStyled = styled.div`
+    width: 100%;
+
+    > div {
+        margin-bottom: 20px;
+    }
+`
+
+const SelectionItemStyled = styled.div`
+    width: 100%;
+    margin-top: 20px;
+`
+
+export const Regions = () => {
+    return (
+        <RegionsStyled>
+            <Text size={'2xl'} weight={'bold'} variant={'h1'} isTitle>Регионы</Text>
+            <TextField placeholder={'Поиск региона'}/>
+            <Text size={'2xl'} weight={'bold'} variant={'h2'} position={'left'}>Все регионы</Text>
+            <SelectionItemStyled>
+                {regionsPageData.map(({to, title, id}) => {
+                    return (
+                        <SelectionItem key={id} to={to} title={title}/>
+                    )
+                })}
+            </SelectionItemStyled>
+        </RegionsStyled>
+    );
+};
