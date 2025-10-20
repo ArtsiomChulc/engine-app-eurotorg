@@ -6,7 +6,7 @@ import { MainPageContainer } from '@/shared/components/organizms/mainPageContain
 export const MainPage = () => {
     return (
         <>
-            <Text variant={'h1'} size={'2xl'} weight={'bold'}>
+            <Text variant={'h1'} size={'2xl'} weight={'bold'} isTitle>
                 Главная
             </Text>
             <MainPageContainer>

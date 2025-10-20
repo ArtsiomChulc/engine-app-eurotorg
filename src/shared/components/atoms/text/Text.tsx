@@ -6,7 +6,8 @@ type TextProps = {
     color?: 'primary' | 'secondary' | 'light' | 'placeholder';
     variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span';
     weight?: 'normal' | 'medium' | 'bold';
-    position?: 'left' | 'center' | 'right'
+    position?: 'left' | 'center' | 'right';
+    isTitle?: boolean;
     children: ReactNode;
 };
 
@@ -15,6 +16,7 @@ const TextStyled = styled.p<{
     $color: TextProps['color'];
     $weight: TextProps['weight'];
     $position: TextProps['position'];
+    $title: TextProps['isTitle'];
 }>`
     ${({ $size }) => {
         switch ($size) {
@@ -70,33 +72,53 @@ const TextStyled = styled.p<{
         switch ($weight) {
             case 'medium':
                 return css`
-          font-weight: 500;
-        `;
+                    font-weight: 500;
+                `;
             case 'bold':
                 return css`
-          font-weight: 700;
-        `;
+                    font-weight: 700;
+                `;
             default:
                 return css`
-          font-weight: 400;
-        `;
+                    font-weight: 400;
+                `;
         }
     }}
+
+    ${({ $title }) =>
+        $title &&
+        css`
+            margin-bottom: 20px;
+            position: relative;
+            display: block;
+            min-width: 100%;
+
+            &:after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 1px;
+                background: var(--line-decor);
+                bottom: -20px;
+                left: 0;
+                right: 0;
+            }
+        `}
 
     ${({ $position }) => {
         switch ($position) {
             case 'right':
                 return css`
-          text-align: right;
-        `;
+                    text-align: right;
+                `;
             case 'left':
                 return css`
-          text-align: left;
-        `;
+                    text-align: left;
+                `;
             default:
                 return css`
-          text-align: center;
-        `;
+                    text-align: center;
+                `;
         }
     }}
 `;
@@ -107,10 +129,18 @@ export const Text = ({
     variant = 'p',
     weight = 'normal',
     position = 'center',
+    isTitle = false,
     children,
 }: TextProps) => {
     return (
-        <TextStyled as={variant} $size={size} $color={color} $weight={weight} $position={position}>
+        <TextStyled
+            as={variant}
+            $size={size}
+            $color={color}
+            $weight={weight}
+            $title={isTitle}
+            $position={position}
+        >
             {children}
         </TextStyled>
     );
