@@ -6,21 +6,22 @@ import styled from 'styled-components';
 const NavPanelStyled = styled.div`
     margin-top: auto;
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     position: relative;
     align-self: flex-end;
+    background: var(--bg-secondary);
 
     &:after {
         content: '';
         position: absolute;
-        top: -5px;
+        top: 0;
         left: 0;
         width: 100%;
         height: 1px;
-        background: var(--line-decor);
+        background: var(--bg-sidebar);
     }
 `;
 
