@@ -41,7 +41,7 @@ const TextWrapper = styled.div`
     gap: 6px;
     align-items: flex-start;
     justify-content: center;
-    padding-left: 15px;
+    padding-left: 8px;
 `;
 
 const IconWrapper = styled.div`
