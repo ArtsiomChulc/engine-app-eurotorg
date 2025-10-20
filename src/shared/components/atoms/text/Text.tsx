@@ -92,6 +92,7 @@ const TextStyled = styled.p<{
             position: relative;
             display: block;
             min-width: 100%;
+            font-size: var(--text-3xl);
 
             &:after {
                 content: '';
