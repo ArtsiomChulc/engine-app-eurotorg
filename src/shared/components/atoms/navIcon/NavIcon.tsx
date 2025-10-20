@@ -22,17 +22,22 @@ const NavIconStyled = styled.div<StyledNavIconProps>`
     color: var(--text-secondary);
     border-radius: 8px;
     cursor: pointer;
+    transition: background .2s ease-in-out;
+    
+    &:hover {
+        background: var(--hover);
+    }
 
     svg {
         display: block;
         font-size: ${({ $size }) => {
             switch ($size) {
                 case 'lg':
-                    return 'calc(26px + 4px)';
-                case 'md':
                     return 'calc(22px + 4px)';
+                case 'md':
+                    return 'calc(20px + 4px)';
                 case 'sm':
-                    return 'calc(18px + 4px)';
+                    return 'calc(16px + 4px)';
             }
         }};
     }
@@ -46,17 +51,17 @@ const NavIconStyled = styled.div<StyledNavIconProps>`
         switch ($size) {
             case 'lg':
                 return css`
-                    padding: 14px;
+                    padding: 12px;
                     font-size: var(--text-base);
                 `;
             case 'md':
                 return css`
-                    padding: 12px;
+                    padding: 10px;
                     font-size: var(--text-sm);
                 `;
             case 'sm':
                 return css`
-                    padding: 10px;
+                    padding: 8px;
                     font-size: var(--text-xs);
                 `;
         }
@@ -71,7 +76,7 @@ const NavIconStyled = styled.div<StyledNavIconProps>`
         $active &&
         css`
             color: var(--primary-dark);
-            background: var(--bg-secondary);
+            background: var(--hover);
         `}
 `;
 
