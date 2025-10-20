@@ -9,11 +9,13 @@ type TextFieldProps = {
     error?: string;
     fullWidth?: boolean;
     icon?: ReactNode;
+    isSearch?: boolean;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const InputWrapper = styled.div<{
     $error?: boolean;
     $disabled?: boolean;
+    $isSearch?: boolean;
     $icon?: ReactNode;
 }>`
     display: flex;
@@ -56,8 +58,8 @@ const InputWrapper = styled.div<{
             }
         `}
 
-    ${({ $icon }) => {
-        if ($icon) {
+    ${({ $icon, $isSearch }) => {
+        if ($icon && !$isSearch) {
             return css`
                 display: flex;
                 align-items: center;
@@ -69,6 +71,23 @@ const InputWrapper = styled.div<{
 
                 input {
                     padding-right: 20px;
+                }
+            `;
+        }
+    }}
+
+    ${({ $icon, $isSearch}) => {
+        if ($icon && $isSearch) {
+            return css`
+                display: flex;
+                align-items: center;
+
+                svg {
+                    cursor: pointer;
+                }
+
+                input {
+                    padding-left: 10px;
                 }
             `;
         }
@@ -87,12 +106,13 @@ export const TextField = ({
     fullWidth,
     icon,
     disabled,
+    isSearch,
     ...props
 }: TextFieldProps) => {
     return (
         <Wrapper $fullWidth={fullWidth}>
             {label && <Label>{label}</Label>}
-            <InputWrapper $error={!!error} $disabled={disabled} $icon={icon}>
+            <InputWrapper $error={!!error} $disabled={disabled} $icon={icon} $isSearch={isSearch}>
                 {icon && icon}
                 <input name={name ? name : ''} disabled={disabled} {...props} />
             </InputWrapper>
