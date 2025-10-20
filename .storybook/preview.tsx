@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/react-vite';
 import { BrowserRouter } from 'react-router';
-import { Layout } from '../src/app/layout/Layout';
 
 const preview: Preview = {
     parameters: {
@@ -13,13 +12,12 @@ const preview: Preview = {
         layout: 'fullscreen',
     },
     decorators: [
-        (Story) =>
+        Story => (
             <BrowserRouter>
-                <Layout>
-                    <Story/>
-                </Layout>
+                <Story />
             </BrowserRouter>
-    ]
+        ),
+    ],
 };
 
 export default preview;
