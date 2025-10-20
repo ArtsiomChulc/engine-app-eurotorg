@@ -25,6 +25,8 @@ const NavPanelContainer = styled.div`
 `;
 
 const Content = styled.div`
+    width: 100%;
+    max-width: 968px;
     display: flex;
     flex-direction: column;
     align-items: center;
