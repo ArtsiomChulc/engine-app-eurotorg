@@ -1,7 +1,7 @@
 import { Text } from '@/shared/components/atoms/text/Text';
 import { MdOutlineArrowForwardIos } from 'react-icons/md';
 import { NavLink } from 'react-router';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type SelectionItemProps = {
     title?: string;
@@ -9,16 +9,29 @@ type SelectionItemProps = {
     to: string;
 };
 
-const SelectionItemContainer = styled.div`
+const SelectionItemContainer = styled.div<{ $isAddress?: boolean }>`
     width: 100%;
     min-width: 320px;
     height: 60px;
-    background: var(--bg-primary);
+    background: ${({ $isAddress }) =>
+        $isAddress ? 'var(--bg-primary)' : 'var(--bg-secondary)'};
     border-radius: 12px;
     padding: 10px;
     display: flex;
     align-items: center;
     cursor: pointer;
+    
+    ${({$isAddress}) => !$isAddress &&
+        css`
+            border-bottom: 2px;
+            border-bottom-color: var(--line-decor);
+            border-bottom-style: solid;
+            transition: background .2s ease-in-out;
+            &:hover {
+                background: var(--hover);
+            }
+        `
+}
 `;
 
 const TextWrapper = styled.div`
@@ -38,7 +51,7 @@ const IconWrapper = styled.div`
 export const SelectionItem = ({ address, title, to }: SelectionItemProps) => {
     return (
         <NavLink to={to}>
-            <SelectionItemContainer>
+            <SelectionItemContainer $isAddress={!!address}>
                 <TextWrapper>
                     <Text
                         weight={'bold'}
