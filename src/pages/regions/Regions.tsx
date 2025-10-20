@@ -7,21 +7,16 @@ import styled from 'styled-components';
 
 const RegionsStyled = styled.div`
     width: 100%;
-
-    > div {
-        margin-bottom: 20px;
-    }
-`;
-
-const SelectionItemStyled = styled.div`
-    width: 100%;
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
 `;
 
 export const Regions = () => {
     return (
         <RegionsStyled>
-            <Text size={'2xl'} weight={'bold'} variant={'h1'} isTitle>
+            <Text weight={'bold'} variant={'h1'} isTitle>
                 Регионы
             </Text>
             <TextField
@@ -32,11 +27,9 @@ export const Regions = () => {
             <Text size={'2xl'} weight={'bold'} variant={'h2'} position={'left'}>
                 Все регионы
             </Text>
-            <SelectionItemStyled>
-                {regionsPageData.map(({ to, title, id }) => {
-                    return <SelectionItem key={id} to={to} title={title} />;
-                })}
-            </SelectionItemStyled>
+            {regionsPageData.map(({ to, title, id }) => {
+                return <SelectionItem key={id} to={to} title={title} />;
+            })}
         </RegionsStyled>
     );
 };
