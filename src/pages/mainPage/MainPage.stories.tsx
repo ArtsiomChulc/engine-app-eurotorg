@@ -1,3 +1,4 @@
+import { Layout } from '@/app/layout/Layout';
 import { MainPage } from '@/pages/mainPage/MainPage';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../index.css';
@@ -21,7 +22,9 @@ const meta = {
                     padding: 10,
                 }}
             >
-                <Story />
+                <Layout>
+                    <Story />
+                </Layout>
             </div>
         ),
     ],
