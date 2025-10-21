@@ -29,7 +29,6 @@ const Content = styled.div`
     max-width: 968px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 40px auto 100px;
 `;
 

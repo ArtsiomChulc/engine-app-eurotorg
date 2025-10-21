@@ -10,7 +10,7 @@ const InfoPieceStyled = styled.div<{ $loading: boolean }>`
     width: 100%;
     height: 60px;
     padding: ${({ $loading }) => ($loading ? 0 : '8px 12px')};
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     display: flex;
     align-items: center;
     justify-content: space-between;
