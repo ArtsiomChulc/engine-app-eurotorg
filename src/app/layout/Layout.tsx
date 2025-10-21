@@ -30,11 +30,7 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px auto 40px;
-    
-    @media screen and (max-width: 554.9px) {
-        margin: 40px auto 100px;
-    }
+    margin: 40px auto 100px;
 `;
 
 export const Layout = ({ children }: LayoutProps) => {
