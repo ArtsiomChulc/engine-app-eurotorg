@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 type SelectionItemProps = {
     title?: string;
     address?: string;
-    to: string;
+    to?: string;
 };
 
 const SelectionItemContainer = styled.div<{ $isAddress?: boolean }>`
@@ -50,7 +50,7 @@ const IconWrapper = styled.div`
 
 export const SelectionItem = ({ address, title, to }: SelectionItemProps) => {
     return (
-        <NavLink to={to}>
+        <NavLink to={to ? to : ''}>
             <SelectionItemContainer $isAddress={!!address}>
                 <TextWrapper>
                     <Text
