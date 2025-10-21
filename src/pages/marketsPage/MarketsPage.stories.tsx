@@ -5,7 +5,7 @@ import '../../index.css';
 
 const meta = {
     component: Markets,
-    title: 'UI/Pages/MarketsPage',
+    title: 'UI/Pages/Markets/MarketsPage',
     parameters: {
         layout: 'fullscreen',
     },
