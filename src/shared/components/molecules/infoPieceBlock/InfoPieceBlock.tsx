@@ -1,15 +1,11 @@
+import { MarketDetailsType } from '@/entities/markets/types';
 import { InfoPiece } from '@/shared/components/atoms/infoPiece/InfoPiece';
 import { Skeleton } from '@/shared/components/atoms/skeleton/Skeleton';
+import { Text } from '@/shared/components/atoms/text/Text';
 import styled from 'styled-components';
 
-type InfoPieceType = {
-    id: string;
-    title: string;
-    text: string;
-};
-
 type InfoPieceBlockProps = {
-    data?: InfoPieceType[];
+    data?: MarketDetailsType;
     isLoading?: boolean;
 };
 
@@ -31,29 +27,43 @@ export const InfoPieceBlock = ({
     data,
     isLoading = false,
 }: InfoPieceBlockProps) => {
-    return (
-        <InfoPieceBlockStyled $loading={isLoading}>
-            {isLoading && (
-                <>
-                    <Skeleton isOverall />
-                    <Skeleton isOverall />
-                    <Skeleton isOverall />
-                    <Skeleton isOverall />
-                </>
-            )}
-            {!data || data.length === 0 && !isLoading ? (
+    if (isLoading) {
+        return (
+            <InfoPieceBlockStyled $loading>
+                <Skeleton isOverall />
+                <Skeleton isOverall />
+                <Skeleton isOverall />
+                <Skeleton isOverall />
+            </InfoPieceBlockStyled>
+        );
+    }
+
+    if (!data) {
+        return (
+            <InfoPieceBlockStyled $loading={false}>
                 <NoDataStyled>No data</NoDataStyled>
-            ) : (
-                data?.map(({ id, title, text }) => {
-                    return (
+            </InfoPieceBlockStyled>
+        );
+    }
+    return (
+        <InfoPieceBlockStyled $loading={false}>
+            <InfoPiece title="Отопление" text={data.heating} />
+            <InfoPiece title="Водоснабжение" text={data.waterSupply ? 'Есть' : 'Нет'} />
+            <InfoPiece title="Канализация" text={data.sewerage} />
+            <InfoPiece title="Установленная мощность" text={data.installedCapacity} />
+            <InfoPiece title="Существующая мощность" text={data.existingCapacity} />
+
+            {data.meterNumber?.length > 0 && (
+                <>
+                    <Text size={'xl'} color={'placeholder'} variant={'h4'} weight={'bold'}>Приборы учета:</Text>
+                    {data.meterNumber.map((meter) => (
                         <InfoPiece
-                            key={id}
-                            title={title}
-                            text={text}
-                            isLoading={isLoading}
+                            key={meter.id}
+                            title={meter.nomination}
+                            text={meter.number}
                         />
-                    );
-                })
+                    ))}
+                </>
             )}
         </InfoPieceBlockStyled>
     );
