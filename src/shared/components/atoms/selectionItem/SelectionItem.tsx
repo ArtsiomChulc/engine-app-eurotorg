@@ -7,6 +7,7 @@ type SelectionItemProps = {
     title?: string;
     address?: string;
     to?: string;
+    onClick?: (item: string) => void;
 };
 
 const SelectionItemContainer = styled.div<{ $isAddress?: boolean }>`
@@ -20,6 +21,10 @@ const SelectionItemContainer = styled.div<{ $isAddress?: boolean }>`
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: background .2s ease-in-out;
+    &:hover {
+        background: var(--hover);
+    }
     
     ${({$isAddress}) => !$isAddress &&
         css`
@@ -27,9 +32,6 @@ const SelectionItemContainer = styled.div<{ $isAddress?: boolean }>`
             border-bottom-color: var(--line-decor);
             border-bottom-style: solid;
             transition: background .2s ease-in-out;
-            &:hover {
-                background: var(--hover);
-            }
         `
 }
 `;
@@ -48,10 +50,16 @@ const IconWrapper = styled.div`
     padding-right: 10px;
 `;
 
-export const SelectionItem = ({ address, title, to }: SelectionItemProps) => {
+export const SelectionItem = ({ address, title, to, onClick }: SelectionItemProps) => {
+    const onClickHandler = () => {
+        if (onClick && title) {
+            onClick(title);
+        }
+    }
+
     return (
         <NavLink to={to ? to : ''}>
-            <SelectionItemContainer $isAddress={!!address}>
+            <SelectionItemContainer $isAddress={!!address} onClick={onClickHandler}>
                 <TextWrapper>
                     <Text
                         weight={'bold'}
