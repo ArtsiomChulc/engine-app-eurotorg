@@ -38,6 +38,7 @@ export const MarketDetailsPageStory: Story = {
     args: {
         details: {
             id: '123',
+            marketNumber: '803',
             meterNumber: [
                 {
                     id: '1234',
