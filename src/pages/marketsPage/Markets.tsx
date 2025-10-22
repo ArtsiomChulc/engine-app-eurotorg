@@ -51,6 +51,7 @@ export const Markets = ({ markets }: MarketsChoiceContainerProps) => {
                         key={id}
                         address={address}
                         title={marketName}
+                        to={marketName}
                     />
                 );
             })}
