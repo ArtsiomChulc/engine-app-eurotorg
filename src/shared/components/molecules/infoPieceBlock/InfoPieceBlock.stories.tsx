@@ -30,9 +30,13 @@ const meta = {
     title: 'UI/InfoPieceBlock',
     tags: ['autodocs'],
     parameters: {
-        layout: 'centered',
+        // layout: 'centered',
     },
-    argTypes: {},
+    argTypes: {
+        edit: {
+            control: 'boolean',
+        },
+    },
     decorators: [
         Story => (
             <div
@@ -72,5 +76,12 @@ export const InfoPieceBlockIsLoadingStory: Story = {
     args: {
         edit: false,
         isLoading: true,
+    },
+};
+
+export const InfoPieceBlockEditStory: Story = {
+    args: {
+        data: mockData,
+        edit: true,
     },
 };

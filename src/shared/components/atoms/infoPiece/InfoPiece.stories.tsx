@@ -1,3 +1,4 @@
+import { Layout } from '@/app/layout/Layout';
 import { InfoPiece } from '@/shared/components/atoms/infoPiece/InfoPiece';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../index.css';
@@ -6,15 +7,14 @@ const meta = {
     component: InfoPiece,
     title: 'UI/InfoPieceBlock/InfoPiece',
     tags: ['autodocs'],
-    parameters: {
-        layout: 'centered',
-    },
     argTypes: {},
     decorators: [
         Story => (
-            <div style={{ minWidth: 360, width: '100%' }}>
-                <Story />
-            </div>
+            <Layout>
+                <div style={{ minWidth: 360, width: '100%' }}>
+                    <Story />
+                </div>
+            </Layout>
         ),
     ],
 } satisfies Meta<typeof InfoPiece>;
