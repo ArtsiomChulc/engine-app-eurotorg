@@ -1,6 +1,7 @@
 import {
     TextField
 } from '@/shared/components/atoms/textField/TextField';
+import { ChangeEvent } from 'react';
 import styled from 'styled-components';
 
 type InfoPieceProps = {
@@ -8,6 +9,7 @@ type InfoPieceProps = {
     text?: string;
     isLoading?: boolean;
     editable?: boolean;
+    onChange?: (v: string) => void;
 };
 
 const InfoPieceStyled = styled.div<{ $loading: boolean }>`
@@ -54,13 +56,21 @@ export const InfoPiece = ({
     text,
     title,
     editable,
+    onChange
 }: InfoPieceProps) => {
+
+    const onChangeHandler = (v: ChangeEvent<HTMLInputElement>) => {
+        if (onChange) {
+            onChange(v.target.value)
+        }
+    }
+
     return (
         <InfoPieceStyled $loading={isLoading}>
             {editable ? (
                 <>
                     <TitleStyled title={title}>{title}</TitleStyled>
-                    <TextField value={text} />
+                    <TextField value={text} onChange={(v) => onChangeHandler(v)} />
                 </>
             ) : (
                 <>

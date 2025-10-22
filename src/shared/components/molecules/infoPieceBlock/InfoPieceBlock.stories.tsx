@@ -7,6 +7,7 @@ import {
 import { InfoPieceBlock } from '@/shared/components/molecules/infoPieceBlock/InfoPieceBlock';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../index.css';
+import { action } from 'storybook/actions';
 
 const mockData: MarketDetailsType = {
     id: '101010',
@@ -29,9 +30,6 @@ const meta = {
     component: InfoPieceBlock,
     title: 'UI/InfoPieceBlock',
     tags: ['autodocs'],
-    parameters: {
-        // layout: 'centered',
-    },
     argTypes: {
         edit: {
             control: 'boolean',
@@ -83,5 +81,6 @@ export const InfoPieceBlockEditStory: Story = {
     args: {
         data: mockData,
         edit: true,
+        onSave: action('onSave called!'),
     },
 };

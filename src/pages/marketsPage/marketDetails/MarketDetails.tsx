@@ -27,8 +27,8 @@ export const MarketDetails = ({ details }: MarketDetailsProps) => {
     const [edit, setEdit] = useState<boolean>(false);
 
     const editHandler = () => {
-        setEdit((prevState) => !prevState)
-    }
+        setEdit(prevState => !prevState);
+    };
 
     return (
         <MarketDetailsStyled>
@@ -40,13 +40,21 @@ export const MarketDetails = ({ details }: MarketDetailsProps) => {
             >
                 Информация по ТО №{details.marketNumber}
             </Text>
-            {!edit && <CiEdit
-                size={30}
-                title={'Редактировать'}
-                color={'var(--secondary)'}
-                onClick={editHandler}
-            />}
-            <InfoPieceBlock data={details} edit={edit} />
+            {!edit && (
+                <CiEdit
+                    size={30}
+                    title={'Редактировать'}
+                    color={'var(--secondary)'}
+                    onClick={editHandler}
+                />
+            )}
+            <InfoPieceBlock
+                data={details}
+                edit={edit}
+                onSave={updated => {
+                    console.log('Updated data:', updated);
+                }}
+            />
         </MarketDetailsStyled>
     );
 };

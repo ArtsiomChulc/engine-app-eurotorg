@@ -76,7 +76,7 @@ const InputWrapper = styled.div<{
         }
     }}
 
-    ${({ $icon, $isSearch}) => {
+    ${({ $icon, $isSearch }) => {
         if ($icon && $isSearch) {
             return css`
                 display: flex;
@@ -112,9 +112,19 @@ export const TextField = ({
     return (
         <Wrapper $fullWidth={fullWidth}>
             {label && <Label>{label}</Label>}
-            <InputWrapper $error={!!error} $disabled={disabled} $icon={icon} $isSearch={isSearch}>
+            <InputWrapper
+                $error={!!error}
+                $disabled={disabled}
+                $icon={icon}
+                $isSearch={isSearch}
+            >
                 {icon && icon}
-                <input name={name ? name : ''} disabled={disabled} {...props} />
+                <input
+                    name={name ? name : ''}
+                    disabled={disabled}
+                    value={props.value}
+                    {...props}
+                />
             </InputWrapper>
             {error && <ErrorText>{error}</ErrorText>}
         </Wrapper>
