@@ -28,6 +28,7 @@ type MeterNumbers = {
 
 export type MarketDetailsType = {
     id: string;
+    marketNumber: string;
     meterNumber: Array<MeterNumbers>;
     heating: HeatingType;
     waterSupply: boolean;
