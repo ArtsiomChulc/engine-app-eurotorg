@@ -1,9 +1,13 @@
+import {
+    TextField
+} from '@/shared/components/atoms/textField/TextField';
 import styled from 'styled-components';
 
 type InfoPieceProps = {
     title?: string;
     text?: string;
     isLoading?: boolean;
+    editable?: boolean;
 };
 
 const InfoPieceStyled = styled.div<{ $loading: boolean }>`
@@ -49,14 +53,21 @@ export const InfoPiece = ({
     isLoading = false,
     text,
     title,
+    editable,
 }: InfoPieceProps) => {
-    console.log(isLoading);
     return (
         <InfoPieceStyled $loading={isLoading}>
-            <>
-                <TitleStyled title={title}>{title}</TitleStyled>
-                <TextStyled title={text}>{text}</TextStyled>
-            </>
+            {editable ? (
+                <>
+                    <TitleStyled title={title}>{title}</TitleStyled>
+                    <TextField value={text} />
+                </>
+            ) : (
+                <>
+                    <TitleStyled title={title}>{title}</TitleStyled>
+                    <TextStyled title={text}>{text}</TextStyled>
+                </>
+            )}
         </InfoPieceStyled>
     );
 };

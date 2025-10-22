@@ -1,4 +1,5 @@
 import { MarketDetailsType } from '@/entities/markets/types';
+import { Button } from '@/shared/components/atoms/button/Button';
 import { InfoPiece } from '@/shared/components/atoms/infoPiece/InfoPiece';
 import { Skeleton } from '@/shared/components/atoms/skeleton/Skeleton';
 import { Text } from '@/shared/components/atoms/text/Text';
@@ -17,6 +18,10 @@ const InfoPieceBlockStyled = styled.div<{ $loading: boolean }>`
     flex-direction: column;
     align-items: center;
     gap: 4px;
+    
+    > button {
+        margin-top: 20px;
+    }
 `;
 
 const NoDataStyled = styled.h2`
@@ -27,7 +32,7 @@ const NoDataStyled = styled.h2`
 export const InfoPieceBlock = ({
     data,
     isLoading = false,
-    edit,
+    edit = false,
 }: InfoPieceBlockProps) => {
     if (isLoading) {
         return (
@@ -50,50 +55,45 @@ export const InfoPieceBlock = ({
 
     return (
         <InfoPieceBlockStyled $loading={false}>
-            {edit ? (
-                <div>edit</div>
-            ) : (
+            <InfoPiece editable={edit} title='Отопление' text={data.heating} />
+            <InfoPiece
+                title='Водоснабжение'
+                text={data.waterSupply ? 'Есть' : 'Нет'}
+                editable={edit}
+            />
+            <InfoPiece title='Канализация' text={data.sewerage} editable={edit} />
+            <InfoPiece
+                title='Установленная мощность'
+                text={data.installedCapacity}
+                editable={edit}
+            />
+            <InfoPiece
+                title='Существующая мощность'
+                text={data.existingCapacity}
+                editable={edit}
+            />
+
+            {data.meterNumber?.length > 0 && (
                 <>
-                    <InfoPiece title='Отопление' text={data.heating} />
-                    <InfoPiece
-                        title='Водоснабжение'
-                        text={data.waterSupply ? 'Есть' : 'Нет'}
-                    />
-                    <InfoPiece title='Канализация' text={data.sewerage} />
-                    <InfoPiece
-                        title='Установленная мощность'
-                        text={data.installedCapacity}
-                    />
-                    <InfoPiece
-                        title='Существующая мощность'
-                        text={data.existingCapacity}
-                    />
+                    <Text
+                        size={'xl'}
+                        color={'placeholder'}
+                        variant={'h4'}
+                        weight={'bold'}
+                    >
+                        Приборы учета:
+                    </Text>
+                    {data.meterNumber.map(meter => (
+                        <InfoPiece
+                            key={meter.id}
+                            title={meter.nomination}
+                            text={meter.number}
+                            editable={edit}
+                        />
+                    ))}
                 </>
             )}
-
-            {edit ? (
-                <div>edit</div>
-            ) : (
-                data.meterNumber?.length > 0 && (
-                    <>
-                        <Text
-                            size={'xl'}
-                            color={'placeholder'}
-                            variant={'h4'}
-                            weight={'bold'}
-                        >
-                            Приборы учета:
-                        </Text>
-                        {data.meterNumber.map(meter => (
-                            <InfoPiece
-                                key={meter.id}
-                                title={meter.nomination}
-                                text={meter.number}
-                            />
-                        ))}
-                    </>
-                )
-            )}
+            {edit && <Button>Сохранить</Button>}
         </InfoPieceBlockStyled>
     );
 };
