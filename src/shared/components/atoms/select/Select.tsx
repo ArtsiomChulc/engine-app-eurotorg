@@ -10,7 +10,7 @@ import { MdHourglassDisabled } from 'react-icons/md';
 import styled, { css, keyframes } from 'styled-components';
 
 export type OptionType = {
-    region: string;
+    item: string;
     id: string;
 };
 
@@ -188,12 +188,12 @@ export const Select = ({
         return isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />;
     };
 
-    const displayValue = selectedOption ? selectedOption.region : '';
+    const displayValue = selectedOption ? selectedOption.item : '';
 
     return (
         <Wrapper ref={ref}>
             <HideInput
-                value={selectedOption ? selectedOption.region : ''}
+                value={selectedOption ? selectedOption.item : ''}
                 name={name}
                 register={register}
             />
@@ -209,19 +209,19 @@ export const Select = ({
                 {getIcon()}
             </SelectStyled>
             <OptionsWrapper $isOpen={isOpen}>
-                {options.map(({ region, id }) => {
+                {options.map(({ item, id }) => {
                     return (
                         <OptionStyled
-                            $isSelected={region === selectedOption?.region}
+                            $isSelected={item === selectedOption?.item}
                             key={id}
                             onClick={() =>
                                 handleSelect({
-                                    region: region,
+                                    item: item,
                                     id: id,
                                 })
                             }
                         >
-                            {region}
+                            {item}
                         </OptionStyled>
                     );
                 })}

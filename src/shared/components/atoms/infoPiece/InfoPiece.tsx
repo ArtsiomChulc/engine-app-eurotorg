@@ -1,4 +1,8 @@
 import {
+    Select,
+    OptionType,
+} from '@/shared/components/atoms/select/Select';
+import {
     TextField
 } from '@/shared/components/atoms/textField/TextField';
 import { ChangeEvent } from 'react';
@@ -9,6 +13,7 @@ type InfoPieceProps = {
     text?: string;
     isLoading?: boolean;
     editable?: boolean;
+    options?: OptionType[];
     onChange?: (v: string) => void;
 };
 
@@ -56,6 +61,7 @@ export const InfoPiece = ({
     text,
     title,
     editable,
+    options,
     onChange
 }: InfoPieceProps) => {
 
@@ -67,17 +73,28 @@ export const InfoPiece = ({
 
     return (
         <InfoPieceStyled $loading={isLoading}>
+            <TitleStyled title={title}>{title}</TitleStyled>
             {editable ? (
-                <>
-                    <TitleStyled title={title}>{title}</TitleStyled>
+                options && options.length > 0 ? (
+                    <Select options={options} />
+                ) : (
                     <TextField value={text} onChange={(v) => onChangeHandler(v)} />
-                </>
+            )
             ) : (
-                <>
-                    <TitleStyled title={title}>{title}</TitleStyled>
-                    <TextStyled title={text}>{text}</TextStyled>
-                </>
+                <TextStyled title={text}>{text}</TextStyled>
             )}
+
+            {/*{editable ? (*/}
+            {/*    <>*/}
+            {/*        <TitleStyled title={title}>{title}</TitleStyled>*/}
+            {/*        <TextField value={text} onChange={(v) => onChangeHandler(v)} />*/}
+            {/*    </>*/}
+            {/*) : (*/}
+            {/*    <>*/}
+            {/*        <TitleStyled title={title}>{title}</TitleStyled>*/}
+            {/*        <TextStyled title={text}>{text}</TextStyled>*/}
+            {/*    </>*/}
+            {/*)}*/}
         </InfoPieceStyled>
     );
 };

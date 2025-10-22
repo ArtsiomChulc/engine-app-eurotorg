@@ -18,9 +18,9 @@ type BlockFormProps = {
 
 // mock!!todo
 export const mockOptions: OptionType[] = [
-    { region: 'Витебский', id: 'asd' },
-    { region: 'Оршанский', id: 'sss' },
-    { region: 'Полоцкий', id: 'qqq' },
+    { item: 'Витебский', id: 'asd' },
+    { item: 'Оршанский', id: 'sss' },
+    { item: 'Полоцкий', id: 'qqq' },
 ];
 
 export const RegisterForm = ({
@@ -38,7 +38,7 @@ export const RegisterForm = ({
     });
 
     const handleRegionChange = (option: OptionType | null) => {
-        setValue('selectRegion', option?.region || '');
+        setValue('selectRegion', option?.item || '');
         console.log('Region selected:', option);
     };
 

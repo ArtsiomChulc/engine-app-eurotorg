@@ -1,4 +1,7 @@
-import { MarketDetailsType } from '@/entities/markets/types';
+import {
+    MarketDetailsType,
+    HeatingType,
+} from '@/entities/markets/types';
 import { Button } from '@/shared/components/atoms/button/Button';
 import { InfoPiece } from '@/shared/components/atoms/infoPiece/InfoPiece';
 import { Skeleton } from '@/shared/components/atoms/skeleton/Skeleton';
@@ -96,6 +99,7 @@ export const InfoPieceBlock = ({
                     editable={edit}
                     title='Отопление'
                     text={formData.heating}
+                    // options={Object.values(HeatingType)}!!todo
                     onChange={v => handleChange('heating', v)}
                 />
                 <InfoPiece
