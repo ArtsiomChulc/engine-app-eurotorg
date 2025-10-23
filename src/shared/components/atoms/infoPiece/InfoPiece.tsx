@@ -1,4 +1,3 @@
-import { HeatingType } from '@/entities/markets/types';
 import { Select, OptionType } from '@/shared/components/atoms/select/Select';
 import { TextField } from '@/shared/components/atoms/textField/TextField';
 import { ChangeEvent } from 'react';
@@ -69,7 +68,11 @@ export const InfoPiece = ({
             <TitleStyled title={title}>{title}</TitleStyled>
             {editable ? (
                 options && options.length > 0 ? (
-                    <Select options={options} placeholder={text} label={'Измените данные'} />
+                    <Select
+                        options={options}
+                        placeholder={text}
+                        label={'Измените данные'}
+                    />
                 ) : (
                     <TextField
                         value={text}
@@ -79,18 +82,6 @@ export const InfoPiece = ({
             ) : (
                 <TextStyled title={text}>{text}</TextStyled>
             )}
-
-            {/*{editable ? (*/}
-            {/*    <>*/}
-            {/*        <TitleStyled title={title}>{title}</TitleStyled>*/}
-            {/*        <TextField value={text} onChange={(v) => onChangeHandler(v)} />*/}
-            {/*    </>*/}
-            {/*) : (*/}
-            {/*    <>*/}
-            {/*        <TitleStyled title={title}>{title}</TitleStyled>*/}
-            {/*        <TextStyled title={text}>{text}</TextStyled>*/}
-            {/*    </>*/}
-            {/*)}*/}
         </InfoPieceStyled>
     );
 };
