@@ -5,6 +5,9 @@ import {
     OptionType,
 } from '@/shared/components/atoms/select/Select';
 import { TextField } from '@/shared/components/atoms/textField/TextField';
+import {
+    mockOptions
+} from '@/shared/components/molecules/registerForm/mock/mockData';
 import { InputsRegister } from '@/shared/components/organizms/authForm/AuthForm';
 import { registerSchema } from '@/shared/validate/schemaValidation';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,13 +18,6 @@ type BlockFormProps = {
     showPassword: string;
     getIconForField: () => ReactNode;
 };
-
-// mock!!todo
-export const mockOptions: OptionType[] = [
-    { item: 'Витебский', id: 'asd' },
-    { item: 'Оршанский', id: 'sss' },
-    { item: 'Полоцкий', id: 'qqq' },
-];
 
 export const RegisterForm = ({
     showPassword,

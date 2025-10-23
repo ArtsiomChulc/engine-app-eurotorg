@@ -3,7 +3,7 @@ import {
 } from '@/shared/components/atoms/select/Select';
 import {
     mockOptions
-} from '@/shared/components/molecules/registerForm/RegisterForm';
+} from '@/shared/components/molecules/registerForm/mock/mockData';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../index.css';
 import { IoIosArrowDown } from 'react-icons/io';
