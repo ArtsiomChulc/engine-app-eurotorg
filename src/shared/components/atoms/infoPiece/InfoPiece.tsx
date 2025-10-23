@@ -1,10 +1,6 @@
-import {
-    Select,
-    OptionType,
-} from '@/shared/components/atoms/select/Select';
-import {
-    TextField
-} from '@/shared/components/atoms/textField/TextField';
+import { HeatingType } from '@/entities/markets/types';
+import { Select, OptionType } from '@/shared/components/atoms/select/Select';
+import { TextField } from '@/shared/components/atoms/textField/TextField';
 import { ChangeEvent } from 'react';
 import styled from 'styled-components';
 
@@ -27,7 +23,6 @@ const InfoPieceStyled = styled.div<{ $loading: boolean }>`
     justify-content: space-between;
     gap: 10px;
     font-size: var(--text-base);
-    overflow: hidden;
 
     &:first-child {
         border-top-left-radius: 12px;
@@ -62,24 +57,25 @@ export const InfoPiece = ({
     title,
     editable,
     options,
-    onChange
+    onChange,
 }: InfoPieceProps) => {
-
     const onChangeHandler = (v: ChangeEvent<HTMLInputElement>) => {
         if (onChange) {
-            onChange(v.target.value)
+            onChange(v.target.value);
         }
-    }
-
+    };
     return (
         <InfoPieceStyled $loading={isLoading}>
             <TitleStyled title={title}>{title}</TitleStyled>
             {editable ? (
                 options && options.length > 0 ? (
-                    <Select options={options} />
+                    <Select options={options} placeholder={text} label={'Измените данные'} />
                 ) : (
-                    <TextField value={text} onChange={(v) => onChangeHandler(v)} />
-            )
+                    <TextField
+                        value={text}
+                        onChange={v => onChangeHandler(v)}
+                    />
+                )
             ) : (
                 <TextStyled title={text}>{text}</TextStyled>
             )}

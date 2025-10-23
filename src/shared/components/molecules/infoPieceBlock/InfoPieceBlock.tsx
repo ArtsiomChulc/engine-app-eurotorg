@@ -1,6 +1,7 @@
 import {
     MarketDetailsType,
     HeatingType,
+    SewerageType,
 } from '@/entities/markets/types';
 import { Button } from '@/shared/components/atoms/button/Button';
 import { InfoPiece } from '@/shared/components/atoms/infoPiece/InfoPiece';
@@ -92,6 +93,18 @@ export const InfoPieceBlock = ({
         );
     }
 
+    const enumValuesHeat = Object.values(HeatingType);
+    const enumValuesSewerage = Object.values(SewerageType);
+
+    const getValuesOptions = (a: Array<HeatingType | SewerageType>) => {
+        return a.map((value, index) => {
+            return {
+                item: value,
+                id: `${index.toString()}asd${index.toString() + 1}`,
+            };
+        });
+    };
+
     return (
         <InfoPieceBlockStyled $loading={false}>
             <FormContainer onSubmit={handleSubmit}>
@@ -99,7 +112,7 @@ export const InfoPieceBlock = ({
                     editable={edit}
                     title='Отопление'
                     text={formData.heating}
-                    // options={Object.values(HeatingType)}!!todo
+                    options={getValuesOptions(enumValuesHeat)}
                     onChange={v => handleChange('heating', v)}
                 />
                 <InfoPiece
@@ -112,6 +125,7 @@ export const InfoPieceBlock = ({
                     title='Канализация'
                     text={formData.sewerage}
                     editable={edit}
+                    options={getValuesOptions(enumValuesSewerage)}
                     onChange={v => handleChange('sewerage', v)}
                 />
                 <InfoPiece

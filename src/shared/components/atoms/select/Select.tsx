@@ -106,7 +106,7 @@ const OptionsWrapper = styled.ul<{ $isOpen: boolean }>`
     top: 125%;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 20;
     animation: ${({ $isOpen }) => ($isOpen ? slideDown : slideUp)} 0.3s ease
         forwards;
 
