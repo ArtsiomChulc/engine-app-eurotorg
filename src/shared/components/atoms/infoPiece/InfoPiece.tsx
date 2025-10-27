@@ -1,4 +1,5 @@
-import { Select, OptionType } from '@/shared/components/atoms/select/Select';
+import { RadioBtn } from '@/shared/components/atoms/radioBtn/RadioBtn';
+import { RadioOption } from '@/shared/components/atoms/select/Select';
 import { TextField } from '@/shared/components/atoms/textField/TextField';
 import { ChangeEvent } from 'react';
 import styled from 'styled-components';
@@ -8,19 +9,20 @@ type InfoPieceProps = {
     text?: string;
     isLoading?: boolean;
     editable?: boolean;
-    options?: OptionType[];
+    options?: RadioOption[] | string[];
+    fieldName?: string;
     onChange?: (v: string) => void;
 };
 
-const InfoPieceStyled = styled.div<{ $loading: boolean }>`
+const InfoPieceStyled = styled.div<{ $loading: boolean, $isOptions: boolean }>`
     width: 100%;
-    height: 60px;
+    height: ${({$isOptions}) => $isOptions ? 'auto' : '60px'};
     padding: ${({ $loading }) => ($loading ? 0 : '8px 12px')};
     background: var(--bg-primary);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+    justify-content: ${({$isOptions}) => $isOptions ? 'flex-start' : 'space-between'};
+    gap: ${({$isOptions}) => $isOptions ? '50px' : '10px'};
     font-size: var(--text-base);
 
     &:first-child {
@@ -57,21 +59,29 @@ export const InfoPiece = ({
     editable,
     options,
     onChange,
+    fieldName,
 }: InfoPieceProps) => {
-    const onChangeHandler = (v: ChangeEvent<HTMLInputElement>) => {
-        if (onChange) {
+    const onChangeHandler = (v: ChangeEvent<HTMLInputElement> | string) => {
+        if (onChange && typeof v !== 'string') {
             onChange(v.target.value);
+        }
+        if (onChange && typeof v === 'string') {
+            onChange(v);
         }
     };
     return (
-        <InfoPieceStyled $loading={isLoading}>
-            <TitleStyled title={title}>{title}</TitleStyled>
+        <InfoPieceStyled $loading={isLoading} $isOptions={!!options}>
+            <TitleStyled title={title}>{title?.toUpperCase()}</TitleStyled>
             {editable ? (
                 options && options.length > 0 ? (
-                    <Select
+                    <RadioBtn
+                        id={fieldName}
+                        name={fieldName}
+                        value={text}
                         options={options}
-                        placeholder={text}
-                        label={'Измените данные'}
+                        onChange={v => {
+                            onChangeHandler(v)
+                        }}
                     />
                 ) : (
                     <TextField

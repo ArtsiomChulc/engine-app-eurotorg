@@ -9,6 +9,11 @@ import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 import { MdHourglassDisabled } from 'react-icons/md';
 import styled, { css, keyframes } from 'styled-components';
 
+export type RadioOption = {
+    label: string;
+    value: string;
+};
+
 export type OptionType = {
     item: string;
     id: string;
