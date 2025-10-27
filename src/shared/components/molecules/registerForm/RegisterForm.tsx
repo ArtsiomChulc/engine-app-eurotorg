@@ -35,7 +35,6 @@ export const RegisterForm = ({
 
     const handleRegionChange = (option: OptionType | null) => {
         setValue('selectRegion', option?.item || '');
-        console.log('Region selected:', option);
     };
 
     const onSubmit: SubmitHandler<InputsRegister> = data =>
