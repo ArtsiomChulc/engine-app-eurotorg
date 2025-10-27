@@ -15,7 +15,7 @@ const initialState = {
     isAuthenticated: boolean;
 };
 
-const slice = createSlice({
+const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
@@ -57,8 +57,8 @@ const slice = createSlice({
     },
 });
 
-export const { logout } = slice.actions;
-export default slice.reducer;
+export const { logout } = authSlice.actions;
+export default authSlice.reducer;
 
 export const selectIsAuthenticated = (state: RootState) =>
     state.auth.isAuthenticated;
