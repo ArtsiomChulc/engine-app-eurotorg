@@ -18,6 +18,10 @@ export enum SewerageType {
     SEPTIC_TANK = 'септик',
     NO = 'нет',
 }
+export enum WaterSupply {
+    YES = 'да',
+    NO = 'нет',
+}
 
 
 type MeterNumbers = {
@@ -31,8 +35,10 @@ export type MarketDetailsType = {
     marketNumber: string;
     meterNumber: Array<MeterNumbers>;
     heating: HeatingType;
-    waterSupply: boolean;
+    waterSupply: WaterSupply;
     sewerage: SewerageType;
     installedCapacity: string;
     existingCapacity: string;
 };
+
+export type InputsRegisterMarket = Omit<MarketDetailsType, 'id'>
