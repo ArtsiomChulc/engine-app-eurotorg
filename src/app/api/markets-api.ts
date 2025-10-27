@@ -1,24 +1,10 @@
-import { api } from '@/app/services/api';
+import { api } from '@/app/api/api';
 import { MarketsType } from '@/entities/markets/types';
-import { LoginCredentials, UserResponse } from '@/typesCommon/authTypes';
-import { retry } from '@reduxjs/toolkit/query/react';
 
 type MarketsResponse = MarketsType[];
 
 export const marketsApi = api.injectEndpoints({
     endpoints: build => ({
-        login: build.mutation<UserResponse, LoginCredentials>({
-            query: credentials => ({
-                url: 'login',
-                method: 'POST',
-                body: credentials,
-            }),
-            extraOptions: {
-                backoff: () => {
-                    retry.fail({ fake: 'error' });
-                },
-            },
-        }),
         getMarkets: build.query<MarketsResponse, void>({
             query: () => ({ url: 'markets' }),
             providesTags: (result = []) => [
@@ -35,8 +21,8 @@ export const marketsApi = api.injectEndpoints({
     }),
 });
 
-export const { useLoginMutation, useGetMarketsQuery } = marketsApi;
+export const { useGetMarketsQuery } = marketsApi;
 
 export const {
-    endpoints: { login, getMarkets },
+    endpoints: { getMarkets },
 } = marketsApi;

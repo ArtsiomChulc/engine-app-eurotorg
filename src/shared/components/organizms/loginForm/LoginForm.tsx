@@ -1,3 +1,4 @@
+import { useLoginMutation } from '@/app/api/auth-api';
 import {
     BlockFormStyled
 } from '@/shared/components/atoms/blockForm/BlockForm';
@@ -18,6 +19,7 @@ export const LoginForm = ({
     showPassword,
     getIconForField,
 }: BlockFormProps) => {
+    const [loginUser] = useLoginMutation()
     const {
         handleSubmit,
         register,
@@ -28,6 +30,7 @@ export const LoginForm = ({
     });
     const onSubmit: SubmitHandler<InputsLogin> = data => {
         console.log(data, errors);
+        loginUser(data)
     };
     return (
         <BlockFormStyled onSubmit={handleSubmit(onSubmit)}>

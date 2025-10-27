@@ -1,13 +1,19 @@
+import { authApi } from '@/app/api/auth-api';
 import { RootState } from '@/app/store/store';
-import { marketsApi } from '@/features/markets';
 import { User } from '@/typesCommon/authTypes';
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     user: null,
     token: null,
-    isAuthenticated: true,
-} as { user: null | User; token: string | null; isAuthenticated: boolean }
+    loading: false,
+    isAuthenticated: false,
+} as {
+    user: null | User;
+    token: string | null;
+    loading: boolean;
+    isAuthenticated: boolean;
+};
 
 const slice = createSlice({
     name: 'auth',
@@ -15,25 +21,44 @@ const slice = createSlice({
     reducers: {
         logout: () => initialState,
     },
-    extraReducers: (builder) => {
+    extraReducers: builder => {
         builder
-            .addMatcher(marketsApi.endpoints.login.matchPending, (state, action) => {
-                console.log('pending', action)
+            .addMatcher(authApi.endpoints.login.matchPending, state => {
+                state.loading = true;
             })
-            .addMatcher(marketsApi.endpoints.login.matchFulfilled, (state, action) => {
-                console.log('fulfilled', action)
-                state.user = action.payload.user
-                state.token = action.payload.token
-                state.isAuthenticated = true
+            .addMatcher(
+                authApi.endpoints.login.matchFulfilled,
+                (state, action) => {
+                    state.user = action.payload.user;
+                    state.token = action.payload.token;
+                    state.isAuthenticated = true;
+                    state.loading = false;
+                }
+            )
+            .addMatcher(authApi.endpoints.login.matchRejected, state => {
+                state.loading = false;
+            });
+        builder
+            .addMatcher(authApi.endpoints.register.matchPending, state => {
+                state.loading = true;
             })
-            .addMatcher(marketsApi.endpoints.login.matchRejected, (state, action) => {
-                console.log('rejected', action)
-            })
+            .addMatcher(
+                authApi.endpoints.register.matchFulfilled,
+                (state, action) => {
+                    state.user = action.payload.user;
+                    state.token = action.payload.token;
+                    state.isAuthenticated = true;
+                    state.loading = false;
+                }
+            )
+            .addMatcher(authApi.endpoints.register.matchRejected, state => {
+                state.loading = false;
+            });
     },
-})
+});
 
-export const { logout } = slice.actions
-export default slice.reducer
+export const { logout } = slice.actions;
+export default slice.reducer;
 
 export const selectIsAuthenticated = (state: RootState) =>
-    state.auth.isAuthenticated
+    state.auth.isAuthenticated;

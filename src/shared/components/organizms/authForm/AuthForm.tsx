@@ -1,5 +1,5 @@
-import { LoginForm } from '@/shared/components/molecules/loginForm/LoginForm';
 import { RegisterForm } from '@/shared/components/molecules/registerForm/RegisterForm';
+import { LoginForm } from '@/shared/components/organizms/loginForm/LoginForm';
 import { useState, ReactNode } from 'react';
 import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
 import styled from 'styled-components';
@@ -13,9 +13,9 @@ export type InputsLogin = {
 
 export type InputsRegister = {
     name: string;
-    surname: string;
+    last_name: string;
     email: string;
-    selectRegion: string;
+    region: string;
     password: string;
     confirmPassword: string;
 };

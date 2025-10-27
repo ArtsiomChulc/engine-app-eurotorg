@@ -1,3 +1,4 @@
+import { useRegisterMutation } from '@/app/api/auth-api';
 import { BlockFormStyled } from '@/shared/components/atoms/blockForm/BlockForm';
 import { Button } from '@/shared/components/atoms/button/Button';
 import {
@@ -23,6 +24,7 @@ export const RegisterForm = ({
     showPassword,
     getIconForField,
 }: BlockFormProps) => {
+    const [registerUser] = useRegisterMutation()
     const {
         handleSubmit,
         register,
@@ -34,11 +36,14 @@ export const RegisterForm = ({
     });
 
     const handleRegionChange = (option: OptionType | null) => {
-        setValue('selectRegion', option?.item || '');
+        setValue('region', option?.item || '');
     };
 
-    const onSubmit: SubmitHandler<InputsRegister> = data =>
+    const onSubmit: SubmitHandler<InputsRegister> = data => {
         console.log(data, errors);
+        registerUser(data)
+    }
+
     return (
         <BlockFormStyled onSubmit={handleSubmit(onSubmit)}>
             <TextField
@@ -53,9 +58,9 @@ export const RegisterForm = ({
                 fullWidth
                 label={'Фамилия'}
                 placeholder={'Фамилия'}
-                {...register('surname')}
+                {...register('last_name')}
                 name={'surname'}
-                error={errors?.surname?.message}
+                error={errors?.last_name?.message}
             />
             <Select options={mockOptions} register={register} onChange={handleRegionChange} />
             <TextField

@@ -29,7 +29,7 @@ export const registerSchema = z
                 'Имя может содержать только буквы и дефисы'
             ),
 
-        surname: z
+        last_name: z
             .string()
             .trim()
             .min(2, 'Фамилия должна содержать минимум 2 символа')
@@ -45,7 +45,7 @@ export const registerSchema = z
             .min(1, 'Email обязателен')
             .email('Некорректный email адрес'),
 
-        selectRegion: z
+        region: z
             .string(),
 
         password: z
