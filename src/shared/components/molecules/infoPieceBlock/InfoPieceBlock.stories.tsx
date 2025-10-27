@@ -2,7 +2,7 @@ import { Layout } from '@/app/layout/Layout';
 import {
     MarketDetailsType,
     HeatingType,
-    SewerageType,
+    SewerageType, WaterSupply,
 } from '@/entities/markets/types';
 import { InfoPieceBlock } from '@/shared/components/molecules/infoPieceBlock/InfoPieceBlock';
 import type { Meta, StoryObj } from '@storybook/react-vite';
@@ -21,7 +21,7 @@ const mockData: MarketDetailsType = {
     ],
     heating: HeatingType.CENTRAL,
     installedCapacity: '200',
-    waterSupply: true,
+    waterSupply: WaterSupply.NO,
     sewerage: SewerageType.SEPTIC_TANK,
     existingCapacity: '140',
 };

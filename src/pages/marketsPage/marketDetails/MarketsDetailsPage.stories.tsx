@@ -1,5 +1,9 @@
 import { Layout } from '@/app/layout/Layout';
-import { HeatingType, SewerageType } from '@/entities/markets/types';
+import {
+    HeatingType,
+    SewerageType,
+    WaterSupply,
+} from '@/entities/markets/types';
 import { MarketDetails } from '@/pages/marketsPage/marketDetails/MarketDetails';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../index.css';
@@ -62,7 +66,7 @@ export const MarketDetailsPageStory: Story = {
                 }
             ],
             heating: HeatingType.ELECTRO,
-            waterSupply: true,
+            waterSupply: WaterSupply.NO,
             sewerage: SewerageType.CENTRAL,
             installedCapacity: '120',
             existingCapacity: '90'
