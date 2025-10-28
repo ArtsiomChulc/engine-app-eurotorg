@@ -15,6 +15,7 @@
       "@src/*": ["src/*"],
       "@/*": ["src/*"]
     },
+    "types": ["vite/client"],
     "allowSyntheticDefaultImports": true
   },
   "include": ["src", "global.d.ts"]
