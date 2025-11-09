@@ -1,9 +1,9 @@
-import { api } from '@/app/api/api';
+import { baseApi } from '@/api/base-api';
 import { MarketsType } from '@/entities/markets/types';
 
 type MarketsResponse = MarketsType[];
 
-export const marketsApi = api.injectEndpoints({
+export const marketsApi = baseApi.injectEndpoints({
     endpoints: build => ({
         getMarkets: build.query<MarketsResponse, void>({
             query: () => ({ url: 'markets' }),

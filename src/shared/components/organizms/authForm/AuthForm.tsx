@@ -1,7 +1,10 @@
 import { RegisterForm } from '@/shared/components/molecules/registerForm/RegisterForm';
 import { LoginForm } from '@/shared/components/organizms/loginForm/LoginForm';
-import { useState, ReactNode } from 'react';
+import { selectIsAuthenticated } from '@/store/slices/auth-slice';
+import { useState, ReactNode, useEffect } from 'react';
 import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
 type Mode = 'register' | 'login';
@@ -13,7 +16,7 @@ export type InputsLogin = {
 
 export type InputsRegister = {
     name: string;
-    last_name: string;
+    lastName: string;
     email: string;
     region: string;
     password: string;
@@ -58,8 +61,16 @@ const FormSwitchText = styled.span`
 `;
 
 export const AuthForm = () => {
+    const navigate = useNavigate();
+    const isAuth = useSelector(selectIsAuthenticated)
     const [mode, setMode] = useState<Mode>('login');
     const [showPassword, setShowPassword] = useState<string>('password');
+
+    useEffect(() => {
+        if (isAuth) {
+            navigate('/');
+        }
+    }, [isAuth, navigate]);
 
     const showPasswordHandler = () => {
         setShowPassword(prevState =>

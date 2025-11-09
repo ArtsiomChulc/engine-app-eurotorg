@@ -5,17 +5,17 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 
 export const pathArr = [
     {
-        to: PATHS.regions,
+        to: PATHS.home,
         icon: <FaMapMarkerAlt />,
-        title: 'регионы'
+        title: 'домашняя'
     },
     {
-        to: PATHS.objects,
+        to: PATHS.markets,
         icon: <BiObjectsHorizontalLeft />,
         title: 'объекты'
     },
     {
-        to: PATHS.home,
+        to: PATHS.profile,
         icon: <CgProfile />,
         title: 'профиль'
     },

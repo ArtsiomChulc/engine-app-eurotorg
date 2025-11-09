@@ -1,4 +1,4 @@
-import { marketsApi } from '@/app/api/markets-api';
+import { marketsApi } from '@/api/markets-api';
 import { MarketsType } from '@/entities/markets/types';
 import { createSlice } from '@reduxjs/toolkit';
 

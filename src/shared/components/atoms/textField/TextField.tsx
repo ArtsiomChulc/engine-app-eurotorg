@@ -1,3 +1,6 @@
+import {
+    ErrorText
+} from '@/shared/components/atoms/errorText/ErrorText';
 import { Label } from '@/shared/components/atoms/label/Label';
 import { Wrapper } from '@/shared/components/atoms/wrapper/Wrapper';
 import { InputHTMLAttributes, ReactNode } from 'react';
@@ -92,11 +95,6 @@ const InputWrapper = styled.div<{
             `;
         }
     }}
-`;
-
-const ErrorText = styled.span`
-    font-size: 12px;
-    color: var(--error, #e53935);
 `;
 
 export const TextField = ({

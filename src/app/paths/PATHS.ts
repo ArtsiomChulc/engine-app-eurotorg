@@ -1,5 +1,5 @@
 export const PATHS = {
-    home: '/profile',
-    objects: '/objects',
-    regions: '/regions'
+    home: '/',
+    markets: '/markets',
+    profile: '/profile'
 }

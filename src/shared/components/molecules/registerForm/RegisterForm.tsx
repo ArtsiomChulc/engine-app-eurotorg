@@ -1,14 +1,9 @@
-import { useRegisterMutation } from '@/app/api/auth-api';
+import { useRegisterMutation } from '@/api/auth-api';
 import { BlockFormStyled } from '@/shared/components/atoms/blockForm/BlockForm';
 import { Button } from '@/shared/components/atoms/button/Button';
-import {
-    Select,
-    OptionType,
-} from '@/shared/components/atoms/select/Select';
+import { Select, OptionType } from '@/shared/components/atoms/select/Select';
 import { TextField } from '@/shared/components/atoms/textField/TextField';
-import {
-    mockOptions
-} from '@/shared/components/molecules/registerForm/mock/mockData';
+import { mockOptions } from '@/shared/components/molecules/registerForm/mock/mockData';
 import { InputsRegister } from '@/shared/components/organizms/authForm/AuthForm';
 import { registerSchema } from '@/shared/validate/schemaValidation';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -24,7 +19,8 @@ export const RegisterForm = ({
     showPassword,
     getIconForField,
 }: BlockFormProps) => {
-    const [registerUser] = useRegisterMutation()
+    const [registerUser] = useRegisterMutation();
+
     const {
         handleSubmit,
         register,
@@ -41,8 +37,8 @@ export const RegisterForm = ({
 
     const onSubmit: SubmitHandler<InputsRegister> = data => {
         console.log(data, errors);
-        registerUser(data)
-    }
+        registerUser(data).unwrap();
+    };
 
     return (
         <BlockFormStyled onSubmit={handleSubmit(onSubmit)}>
@@ -58,11 +54,16 @@ export const RegisterForm = ({
                 fullWidth
                 label={'Фамилия'}
                 placeholder={'Фамилия'}
-                {...register('last_name')}
-                name={'surname'}
-                error={errors?.last_name?.message}
+                {...register('lastName')}
+                name={'lastName'}
+                error={errors?.lastName?.message}
             />
-            <Select options={mockOptions} register={register} onChange={handleRegionChange} />
+            <Select
+                options={mockOptions}
+                register={register}
+                onChange={handleRegionChange}
+                error={errors?.region?.message}
+            />
             <TextField
                 fullWidth
                 label={'Электронная почта'}

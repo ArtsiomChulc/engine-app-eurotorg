@@ -1,3 +1,6 @@
+import {
+    ErrorText
+} from '@/shared/components/atoms/errorText/ErrorText';
 import { HideInput } from '@/shared/components/atoms/hiddenRegisterInput/HideInput';
 import { Label } from '@/shared/components/atoms/label/Label';
 import { Wrapper } from '@/shared/components/atoms/wrapper/Wrapper';
@@ -29,6 +32,7 @@ type SelectProps = {
     onChange?: (option: OptionType | null) => void;
     register?: UseFormRegister<InputsRegister>;
     name?: string;
+    error?: string;
 };
 
 // Анимации
@@ -42,6 +46,21 @@ const slideDown = keyframes`
         opacity: 1;
         transform: translateY(-20px);
         max-height: 300px;
+    }
+`;
+
+const errorSelect = keyframes`
+    0% {
+        transform: translateX(-10px);
+        background: var(--bg-secondary);
+    }
+    50% {
+        transform: translateX(10px);
+        background: var(--error);
+    }
+    100% {
+        transform: translateX(0);
+        background: var(--bg-secondary);
     }
 `;
 
@@ -61,6 +80,7 @@ const slideUp = keyframes`
 const SelectStyled = styled.div<{
     $icon?: ReactNode;
     $disabled?: boolean;
+    $isError?: boolean;
 }>`
     width: 100%;
     display: flex;
@@ -73,6 +93,7 @@ const SelectStyled = styled.div<{
     background: var(--bg-secondary);
     position: relative;
     cursor: pointer;
+    animation: ${({ $isError }) => $isError && errorSelect} 0.3s ease-in-out;
 
     span {
         max-width: 720px;
@@ -121,7 +142,6 @@ const OptionsWrapper = styled.ul<{ $isOpen: boolean }>`
             pointer-events: none;
         `}
 `;
-
 const OptionStyled = styled.li<{ $isSelected: boolean }>`
     font-size: var(--text-sm);
     width: 100%;
@@ -148,7 +168,6 @@ const OptionStyled = styled.li<{ $isSelected: boolean }>`
             border-radius: 4px;
         `}
 `;
-
 const Placeholder = styled.span<{ $hasValue: boolean }>`
     color: var(--text-placeholder);
 
@@ -158,7 +177,6 @@ const Placeholder = styled.span<{ $hasValue: boolean }>`
             color: var(--text-primary);
         `}
 `;
-
 export const Select = ({
     options,
     placeholder = 'Выберите регион',
@@ -167,6 +185,7 @@ export const Select = ({
     disabled,
     onChange,
     register,
+    error,
     name = 'selectRegion',
 }: SelectProps) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -203,7 +222,11 @@ export const Select = ({
                 register={register}
             />
             <Label>{label}</Label>
-            <SelectStyled $disabled={disabled} onClick={handleToggle}>
+            <SelectStyled
+                $disabled={disabled}
+                onClick={handleToggle}
+                $isError={!!error}
+            >
                 {options ? (
                     <Placeholder $hasValue={!!displayValue}>
                         {displayValue || placeholder}
@@ -231,6 +254,7 @@ export const Select = ({
                     );
                 })}
             </OptionsWrapper>
+            {error && <ErrorText>{error}</ErrorText>}
         </Wrapper>
     );
 };

@@ -1,6 +1,6 @@
 export interface User {
     name: string;
-    last_name: string;
+    lastName: string;
     region: string;
     email: string;
     password: string;
@@ -13,5 +13,5 @@ export interface LoginCredentials {
 
 export interface UserResponse {
     user: User
-    token: string
+    accessToken: string
 }

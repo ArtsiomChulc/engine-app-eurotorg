@@ -29,15 +29,15 @@ export const registerSchema = z
                 'Имя может содержать только буквы и дефисы'
             ),
 
-        last_name: z
+        lastName: z
             .string()
             .trim()
             .min(2, 'Фамилия должна содержать минимум 2 символа')
             .max(50, 'Фамилия не должна превышать 50 символов')
             .regex(
-                /^[a-zA-Zа-яА-ЯёЁ\s-]+$/,
-                'Фамилия может содержать только буквы и дефисы'
-            ),
+            /^[a-zA-Zа-яА-ЯёЁ\s-]+$/,
+            'Фамилия может содержать только буквы и дефисы'
+        ),
 
         email: z
             .string()
@@ -46,7 +46,7 @@ export const registerSchema = z
             .email('Некорректный email адрес'),
 
         region: z
-            .string(),
+            .string({message: 'Поле обязательное для заполнения' }),
 
         password: z
             .string()
