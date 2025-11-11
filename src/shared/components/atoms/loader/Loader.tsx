@@ -1,21 +1,27 @@
 import styled, { keyframes } from 'styled-components';
 
-const moveX  = keyframes `
+const moveX = keyframes`
     0% {
-        top: 0 ;
+        top: 0;
         transform: translateX(-50%) scale(1.5);
     }
     50% {
-        top: -75% ;
+        top: -75%;
         transform: translateX(-50%) scale(0.5);
     }
     100% {
         top: -200%;
         transform: translateX(-50%) scale(1.5);
     }
-`
+`;
 
-
+const LoaderWrapper = styled.div`
+    width: 100%;
+    //height: auto;
+    padding-top: 15%;
+    display: grid;
+    place-content: center;
+`;
 
 const LoaderStyled = styled.span`
     display: inline-block;
@@ -25,10 +31,11 @@ const LoaderStyled = styled.span`
     border-radius: 50%;
     background: var(--secondary);
     position: relative;
+    right: 30px;
 
     &:after,
     &:before {
-        content: "";
+        content: '';
         position: absolute;
         width: 100%;
         height: 100%;
@@ -40,12 +47,14 @@ const LoaderStyled = styled.span`
     }
 
     &:after {
-        animation: ${moveX} 0.5s infinite linear alternate;
+        animation: ${moveX} 0.8s infinite linear alternate;
     }
-`
+`;
 
 export const Loader = () => {
     return (
-        <LoaderStyled/>
+        <LoaderWrapper>
+            <LoaderStyled />
+        </LoaderWrapper>
     );
 };
