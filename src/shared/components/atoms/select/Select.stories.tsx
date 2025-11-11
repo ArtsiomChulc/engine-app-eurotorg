@@ -2,8 +2,8 @@ import {
     Select,
 } from '@/shared/components/atoms/select/Select';
 import {
-    mockOptions
-} from '@/shared/components/molecules/registerForm/mock/mockData';
+    options
+} from '@/shared/components/molecules/registerForm/schemas/optionsData';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../index.css';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -34,14 +34,14 @@ type Story = StoryObj<typeof meta>;
 
 export const SelectStory: Story = {
     args: {
-        options: mockOptions,
+        options: options,
         icon: <IoIosArrowDown/>
     },
 };
 
 export const SelectDisabledStory: Story = {
     args: {
-        options: mockOptions,
+        options: options,
         disabled: true,
         icon: <IoIosArrowDown/>
     },

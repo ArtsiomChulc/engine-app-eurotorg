@@ -3,7 +3,7 @@ import { BlockFormStyled } from '@/shared/components/atoms/blockForm/BlockForm';
 import { Button } from '@/shared/components/atoms/button/Button';
 import { Select, OptionType } from '@/shared/components/atoms/select/Select';
 import { TextField } from '@/shared/components/atoms/textField/TextField';
-import { mockOptions } from '@/shared/components/molecules/registerForm/mock/mockData';
+import { options } from '@/shared/components/molecules/registerForm/schemas/optionsData';
 import { InputsRegister } from '@/shared/components/organizms/authForm/AuthForm';
 import { registerSchema } from '@/shared/validate/schemaValidation';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -59,7 +59,7 @@ export const RegisterForm = ({
                 error={errors?.lastName?.message}
             />
             <Select
-                options={mockOptions}
+                options={options}
                 register={register}
                 onChange={handleRegionChange}
                 error={errors?.region?.message}

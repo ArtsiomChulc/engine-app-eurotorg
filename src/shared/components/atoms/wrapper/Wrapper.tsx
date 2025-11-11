@@ -5,5 +5,6 @@ export const Wrapper = styled.div<{ $fullWidth?: boolean }>`
     flex-direction: column;
     gap: 4px;
     width: 100%;
+    max-width: 720px;
     position: relative;
 `;

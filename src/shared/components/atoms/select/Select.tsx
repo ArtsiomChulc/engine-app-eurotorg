@@ -83,6 +83,7 @@ const SelectStyled = styled.div<{
     $isError?: boolean;
 }>`
     width: 100%;
+    max-width: 720px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -117,6 +118,7 @@ const SelectStyled = styled.div<{
 
 const OptionsWrapper = styled.ul<{ $isOpen: boolean }>`
     width: 100%;
+    max-width: 720px;
     min-height: 140px;
     padding: 10px 12px;
     background: var(--bg-secondary);
@@ -148,7 +150,6 @@ const OptionStyled = styled.li<{ $isSelected: boolean }>`
     padding: 10px;
     cursor: pointer;
     overflow: hidden;
-    max-width: 720px;
     white-space: nowrap;
     text-overflow: ellipsis;
 

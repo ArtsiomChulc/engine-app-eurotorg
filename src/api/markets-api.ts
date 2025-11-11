@@ -1,5 +1,5 @@
 import { baseApi } from '@/api/base-api';
-import { MarketsType } from '@/entities/markets/types';
+import { MarketsType } from '@/typesCommon/markets/types';
 
 type MarketsResponse = MarketsType[];
 

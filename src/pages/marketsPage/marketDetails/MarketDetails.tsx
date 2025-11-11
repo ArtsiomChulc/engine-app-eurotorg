@@ -1,4 +1,4 @@
-import { MarketDetailsType } from '@/entities/markets/types';
+import { MarketDetailsType } from '@/typesCommon/markets/types';
 import { Text } from '@/shared/components/atoms/text/Text';
 import { InfoPieceBlock } from '@/shared/components/molecules/infoPieceBlock/InfoPieceBlock';
 import { useState } from 'react';

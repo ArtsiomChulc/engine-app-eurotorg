@@ -1,5 +1,5 @@
 import { marketsApi } from '@/api/markets-api';
-import { MarketsType } from '@/entities/markets/types';
+import { MarketsType } from '@/typesCommon/markets/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {

@@ -3,7 +3,7 @@ import {
     HeatingType,
     SewerageType,
     WaterSupply,
-} from '@/entities/markets/types';
+} from '@/typesCommon/markets/types';
 import { MarketDetails } from '@/pages/marketsPage/marketDetails/MarketDetails';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../index.css';

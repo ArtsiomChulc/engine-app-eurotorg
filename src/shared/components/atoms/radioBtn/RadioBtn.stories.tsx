@@ -1,5 +1,5 @@
 import { Layout } from '@/app/layout/Layout';
-import { SewerageType, HeatingType } from '@/entities/markets/types';
+import { SewerageType, HeatingType } from '@/typesCommon/markets/types';
 import { RadioBtn } from '@/shared/components/atoms/radioBtn/RadioBtn';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../index.css';

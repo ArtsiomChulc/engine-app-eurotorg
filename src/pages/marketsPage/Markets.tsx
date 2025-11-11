@@ -1,4 +1,4 @@
-import { MarketsType } from '@/entities/markets/types';
+import { MarketsType } from '@/typesCommon/markets/types';
 import { SelectionItem } from '@/shared/components/atoms/selectionItem/SelectionItem';
 import { Text } from '@/shared/components/atoms/text/Text';
 import {

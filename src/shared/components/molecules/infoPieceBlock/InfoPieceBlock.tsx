@@ -2,7 +2,7 @@ import {
     MarketDetailsType,
     HeatingType,
     SewerageType, WaterSupply,
-} from '@/entities/markets/types';
+} from '@/typesCommon/markets/types';
 import {
     BlockFormStyled
 } from '@/shared/components/atoms/blockForm/BlockForm';

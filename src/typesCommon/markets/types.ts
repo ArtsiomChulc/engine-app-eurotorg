@@ -6,11 +6,12 @@ export type MarketsType = {
 
 export type HandbookType = {
     id: string;
-    region: string
+    region?: string
     marketNumber: string
     marketAddress: string
     responsible: string
     district: string
+    boss: string
 };
 
 export enum HeatingType {

@@ -3,7 +3,7 @@ import {
     MarketDetailsType,
     HeatingType,
     SewerageType, WaterSupply,
-} from '@/entities/markets/types';
+} from '@/typesCommon/markets/types';
 import { InfoPieceBlock } from '@/shared/components/molecules/infoPieceBlock/InfoPieceBlock';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../../../index.css';
