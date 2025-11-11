@@ -4,6 +4,15 @@ export type MarketsType = {
     id: string;
 };
 
+export type HandbookType = {
+    id: string;
+    region: string
+    marketNumber: string
+    marketAddress: string
+    responsible: string
+    district: string
+};
+
 export enum HeatingType {
     ELECTRO = 'электро',
     CENTRAL = 'центральное',

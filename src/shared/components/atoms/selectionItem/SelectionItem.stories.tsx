@@ -30,17 +30,20 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const InfoPieceStory: Story = {
+export const SelectionItemStory: Story = {
     args: {
-        title: 'Магазин №494',
-        address: 'Адрес магазина',
+        marketNumber: '494',
+        marketAddress: 'Адрес магазина',
+        district: 'Оршанский',
+        responsible: 'Чульц',
+        boss: 'Клява',
         to: 'to-item',
     },
 };
 
-export const InfoPieceWithoutAddressStory: Story = {
+export const SelectionItemWithoutAddressStory: Story = {
     args: {
-        title: 'Оршанский район',
+        marketNumber: '555',
         to: 'to-item',
     },
 };
