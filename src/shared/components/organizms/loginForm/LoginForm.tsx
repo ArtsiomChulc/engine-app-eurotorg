@@ -35,8 +35,13 @@ export const LoginForm = ({
     const dispatch = useDispatch<AppDispatch>()
 
     const onSubmit: SubmitHandler<InputsLogin> = async (data) => {
-        const res = await loginUser(data).unwrap()
-        dispatch(setAccessToken(res.accessToken))
+        try {
+            const res = await loginUser(data).unwrap()
+            dispatch(setAccessToken(res.accessToken))
+            console.log('result-login', res);
+        } catch (e) {
+            console.error(e)
+        }
     };
     return (
         <BlockFormStyled onSubmit={handleSubmit(onSubmit)}>

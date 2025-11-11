@@ -3,20 +3,21 @@ import { User } from '@/typesCommon/authTypes';
 import { authApi } from '@/api/auth-api';
 import { RootState } from '@/store/store';
 
-const token = localStorage.getItem('accessToken');
 
 interface AuthState {
     user: User | null;
     accessToken: string | null;
     isAuthenticated: boolean;
     loading: boolean;
+    initialized: boolean;
 }
 
 const initialState: AuthState = {
     user: null,
     accessToken: null,
-    isAuthenticated: !!token,
+    isAuthenticated: false,
     loading: false,
+    initialized: false,
 };
 
 const authSlice = createSlice({
@@ -28,12 +29,15 @@ const authSlice = createSlice({
             state.accessToken = action.payload.accessToken;
             state.user = action.payload.user;
             state.isAuthenticated = true;
+            state.initialized = true; // ✅ проверка завершена
         },
         setAccessToken: (state, action: PayloadAction<string>) => {
-            state.loading = true;
             state.accessToken = action.payload;
-            localStorage.setItem("accessToken", action.payload);
-            state.loading = false;
+            state.isAuthenticated = true;
+            state.initialized = true;
+        },
+        setInitialized: (state) => {
+            state.initialized = true; // ✅ даже если токена нет
         },
     },
     extraReducers: (builder) => {
@@ -69,7 +73,7 @@ const authSlice = createSlice({
     },
 });
 
-export const { logout, refreshTokens, setAccessToken } = authSlice.actions;
+export const { logout, refreshTokens, setAccessToken, setInitialized } = authSlice.actions;
 export default authSlice.reducer;
 
 export const selectIsAuthenticated = (state: RootState) => state.auth.isAuthenticated;
