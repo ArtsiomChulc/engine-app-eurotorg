@@ -1,4 +1,6 @@
 import { PATHS } from '@/app/paths/PATHS';
+import { MainPage } from '@/pages/mainPage/MainPage';
+import { Markets } from '@/pages/marketsPage/Markets';
 import {ReactNode} from "react";
 
 interface IProtectedRoutes {
@@ -8,10 +10,10 @@ interface IProtectedRoutes {
 
 export const protectedRoutes: IProtectedRoutes[] = [
     {
-        path: PATHS.home, element: <div>home</div>
+        path: PATHS.home, element: <MainPage/>
     },
     {
-        path: PATHS.markets, element: <div>markets</div>
+        path: PATHS.markets, element: <Markets/>
     },
     {
         path: PATHS.profile, element: <div>profile</div>
