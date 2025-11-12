@@ -6,10 +6,17 @@ export type MarketsType = {
 
 export type HandbookType = {
     id: string;
+    marketNumber: string
+    marketAddress: string
+};
+
+export type HandbookDetailsType = {
+    id: string;
     region?: string
     marketNumber: string
     marketAddress: string
     responsible: string
+    phoneNumber: string
     district: string
     boss: string
 };
