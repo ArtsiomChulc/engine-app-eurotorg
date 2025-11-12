@@ -45,13 +45,13 @@ export const Markets = ({ markets }: MarketsChoiceContainerProps) => {
             <Text size={'2xl'} weight={'bold'} variant={'h2'} position={'left'}>
                 Выберите объект
             </Text>
-            {markets?.map(({ marketName, address, id }) => {
+            {markets?.map(({ marketAddress, marketNumber}) => {
                 return (
                     <SelectionItem
-                        key={id}
-                        address={address}
-                        title={marketName}
-                        to={marketName}
+                        key={marketNumber}
+                        to={marketNumber}
+                        marketNumber={marketNumber}
+                        marketAddress={marketAddress}
                     />
                 );
             })}
