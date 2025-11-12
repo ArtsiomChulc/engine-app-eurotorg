@@ -40,17 +40,13 @@ export const HandBook = ({ items }: HandBookProps) => {
                             id,
                             marketAddress,
                             marketNumber,
-                            district,
-                            responsible,
-                            boss,
                         }) => {
                             return (
                                 <SelectionItem
                                     key={id}
-                                    responsible={responsible}
+                                    id={id}
                                     marketAddress={marketAddress}
-                                    district={district}
-                                    boss={boss}
+                                    to={marketNumber}
                                     marketNumber={marketNumber}
                                 />
                             );

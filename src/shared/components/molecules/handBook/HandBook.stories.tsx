@@ -8,26 +8,17 @@ const mockData: HandbookType[] = [
     {
         id: '1',
         marketAddress: 'Орша, ул. Хренулица, 38',
-        marketNumber: '555',
-        district: 'Оршанский',
-        responsible: 'Чульц',
-        boss: 'Клява',
+        marketNumber: '444',
     },
     {
         id: '2',
         marketAddress: 'Орша, ул. Хренулица, 38',
         marketNumber: '555',
-        district: 'Оршанский',
-        responsible: 'Чульц',
-        boss: 'Клява',
     },
     {
         id: '3',
         marketAddress: 'Орша, ул. Хренулица, 38',
-        marketNumber: '555',
-        district: 'Оршанский',
-        responsible: 'Чульц',
-        boss: 'Клява',
+        marketNumber: '222',
     },
 ];
 
@@ -42,7 +33,7 @@ const meta = {
                 style={{
                     minWidth: '100%',
                     height: '100%',
-                    background: 'var(--bg-secondary)',
+                    background: 'var(--bg-primary)',
                     margin: '0 auto',
                     padding: 10,
                 }}
