@@ -1,24 +1,19 @@
-export type MarketsType = {
-    marketName: string;
-    address: string;
-    id: string;
-};
+export type MarketsType = HandbookType;
 
 export type HandbookType = {
-    id: string;
-    marketNumber: string
-    marketAddress: string
+    marketNumber: string;
+    marketAddress: string;
 };
 
 export type HandbookDetailsType = {
     id: string;
-    region?: string
-    marketNumber: string
-    marketAddress: string
-    responsible: string
-    phoneNumber: string
-    district: string
-    boss: string
+    region?: string;
+    marketNumber: string;
+    marketAddress: string;
+    responsible: string;
+    phoneNumber: string;
+    district: string;
+    boss: string;
 };
 
 export enum HeatingType {
@@ -35,11 +30,11 @@ export enum SewerageType {
     SEPTIC_TANK = 'септик',
     NO = 'нет',
 }
+
 export enum WaterSupply {
     YES = 'да',
     NO = 'нет',
 }
-
 
 type MeterNumbers = {
     id: string;
@@ -58,4 +53,4 @@ export type MarketDetailsType = {
     existingCapacity: string;
 };
 
-export type InputsRegisterMarket = Omit<MarketDetailsType, 'id'>
+export type InputsRegisterMarket = Omit<MarketDetailsType, 'id'>;
