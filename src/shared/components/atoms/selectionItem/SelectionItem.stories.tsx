@@ -32,18 +32,9 @@ type Story = StoryObj<typeof meta>;
 
 export const SelectionItemStory: Story = {
     args: {
+        id: '1',
         marketNumber: '494',
         marketAddress: 'Адрес магазина',
-        district: 'Оршанский',
-        responsible: 'Чульц',
-        boss: 'Клява',
-        to: 'to-item',
-    },
-};
-
-export const SelectionItemWithoutAddressStory: Story = {
-    args: {
-        marketNumber: '555',
-        to: 'to-item',
+        to: '/to-item',
     },
 };
