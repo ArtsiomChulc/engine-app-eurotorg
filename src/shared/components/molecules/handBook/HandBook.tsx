@@ -37,14 +37,12 @@ export const HandBook = ({ items }: HandBookProps) => {
                 {items &&
                     items.map(
                         ({
-                            id,
                             marketAddress,
                             marketNumber,
                         }) => {
                             return (
                                 <SelectionItem
-                                    key={id}
-                                    id={id}
+                                    key={marketNumber}
                                     marketAddress={marketAddress}
                                     to={marketNumber}
                                     marketNumber={marketNumber}

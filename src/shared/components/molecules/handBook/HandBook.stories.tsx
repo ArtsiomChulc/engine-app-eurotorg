@@ -6,17 +6,14 @@ import '../../../../index.css';
 
 const mockData: HandbookType[] = [
     {
-        id: '1',
         marketAddress: 'Орша, ул. Хренулица, 38',
         marketNumber: '444',
     },
     {
-        id: '2',
         marketAddress: 'Орша, ул. Хренулица, 38',
         marketNumber: '555',
     },
     {
-        id: '3',
         marketAddress: 'Орша, ул. Хренулица, 38',
         marketNumber: '222',
     },
