@@ -11,7 +11,7 @@ type LayoutProps = {
 const Wrapper = styled.div`
     display: flex;
     min-height: 100vh;
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
     flex-direction: column;
 `;
 
