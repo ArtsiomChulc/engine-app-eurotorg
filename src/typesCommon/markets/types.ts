@@ -1,12 +1,15 @@
 export type MarketsType = HandbookType;
 
 export type HandbookType = {
-    marketNumber: string;
-    marketAddress: string;
+    marketNumber?: string,
+    address?: string,
+    operatingMode?: string,
+    region?: string,
+    directorId?: number | null,
+    engineerId?: number | null,
 };
 
 export type HandbookDetailsType = {
-    id: string;
     region?: string;
     marketNumber: string;
     marketAddress: string;

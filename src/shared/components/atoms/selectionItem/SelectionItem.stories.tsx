@@ -18,7 +18,7 @@ const meta = {
                     width: '100vw',
                     height: '100vh',
                     padding: '20px',
-                    background: 'var(--bg-secondary)',
+                    background: 'var(--bg-primary)',
                 }}
             >
                 <Story />
@@ -32,7 +32,6 @@ type Story = StoryObj<typeof meta>;
 
 export const SelectionItemStory: Story = {
     args: {
-        id: '1',
         marketNumber: '494',
         marketAddress: 'Адрес магазина',
         to: '/to-item',

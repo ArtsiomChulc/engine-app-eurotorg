@@ -40,10 +40,10 @@ const IconWrapper = styled.div`
 `;
 
 export const SelectionItem = ({
-    marketAddress,
     marketNumber,
+    address,
     onClick,
-    to
+    to,
 }: SelectionItemProps) => {
     const onClickHandler = () => {
         if (onClick && marketNumber) {
@@ -70,7 +70,7 @@ export const SelectionItem = ({
                         Магазин №{marketNumber}
                     </Text>
                     <Text size={'sm'} color={'secondary'}>
-                        Адрес: {marketAddress}
+                        Адрес: {address}
                     </Text>
                 </TextWrapper>
                 <IconWrapper>

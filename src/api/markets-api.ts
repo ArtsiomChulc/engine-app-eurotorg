@@ -6,13 +6,13 @@ type MarketsResponse = MarketsType[];
 export const marketsApi = baseApi.injectEndpoints({
     endpoints: build => ({
         getMarkets: build.query<MarketsResponse, void>({
-            query: () => ({ url: 'markets' }),
+            query: () => ({ url: 'handbook' }),
             providesTags: (result = []) => [
                 ...result.map(
-                    ({ id }) =>
+                    ({ marketNumber }) =>
                         ({
                             type: 'Markets',
-                            id,
+                            marketNumber,
                         }) as const
                 ),
                 { type: 'Markets' as const, id: 'LIST' },
@@ -22,7 +22,3 @@ export const marketsApi = baseApi.injectEndpoints({
 });
 
 export const { useGetMarketsQuery } = marketsApi;
-
-export const {
-    endpoints: { getMarkets },
-} = marketsApi;
