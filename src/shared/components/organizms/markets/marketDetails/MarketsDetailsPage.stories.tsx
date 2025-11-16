@@ -4,9 +4,9 @@ import {
     SewerageType,
     WaterSupply,
 } from '@/typesCommon/markets/types';
-import { MarketDetails } from '@/pages/marketsPage/marketDetails/MarketDetails';
+import { MarketDetails } from '@/shared/components/organizms/markets/marketDetails/MarketDetails';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import '../../../index.css';
+import '../../../../../index.css';
 
 const meta = {
     component: MarketDetails,

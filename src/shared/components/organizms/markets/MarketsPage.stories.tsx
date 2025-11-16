@@ -1,7 +1,7 @@
 import { Layout } from '@/app/layout/Layout';
-import { Markets } from '@/pages/marketsPage/Markets';
+import { Markets } from '@/shared/components/organizms/markets/Markets';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import '../../index.css';
+import '../../../../index.css';
 
 const mockData = [
     {
