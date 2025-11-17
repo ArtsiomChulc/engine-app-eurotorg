@@ -29,7 +29,7 @@ const authSlice = createSlice({
             state.accessToken = action.payload.accessToken;
             state.user = action.payload.user;
             state.isAuthenticated = true;
-            state.initialized = true; // ✅ проверка завершена
+            state.initialized = true;
         },
         setAccessToken: (state, action: PayloadAction<string>) => {
             state.accessToken = action.payload;
@@ -37,11 +37,10 @@ const authSlice = createSlice({
             state.initialized = true;
         },
         setInitialized: (state) => {
-            state.initialized = true; // ✅ даже если токена нет
+            state.initialized = true;
         },
     },
     extraReducers: (builder) => {
-        // Login
         builder
             .addMatcher(authApi.endpoints.login.matchPending, (state) => {
                 state.loading = true;
@@ -55,8 +54,6 @@ const authSlice = createSlice({
             .addMatcher(authApi.endpoints.login.matchRejected, (state) => {
                 state.loading = false;
             });
-
-        // Register
         builder
             .addMatcher(authApi.endpoints.register.matchPending, (state) => {
                 state.loading = true;
@@ -78,4 +75,3 @@ export default authSlice.reducer;
 
 export const selectIsAuthenticated = (state: RootState) => state.auth.isAuthenticated;
 export const selectUser = (state: RootState) => state.auth.user;
-export const selectAccessToken = (state: RootState) => state.auth.accessToken;
