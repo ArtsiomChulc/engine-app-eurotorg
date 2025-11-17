@@ -1,4 +1,3 @@
-import '../App.css';
 import { useRefreshMutation } from '@/api/auth-api';
 import { ProtectedRouter } from '@/app/router/ProtectedRouter';
 import { protectedRoutes } from '@/app/router/schemas/protectedRoutes';
@@ -9,6 +8,7 @@ import { RootState } from '@/store/store';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router';
+import '../App.css';
 
 function App() {
     const { initialized } = useSelector((state: RootState) => state.auth);
@@ -29,7 +29,11 @@ function App() {
     const router = createBrowserRouter([
         ...protectedRoutes.map(route => ({
             path: route.path,
-            element: <ProtectedRouter>{route.element}</ProtectedRouter>,
+            element: (
+                <ProtectedRouter requiredRole={route.role ?? null}>
+                    {route.element}
+                </ProtectedRouter>
+            ),
         })),
         {
             path: 'auth-page',
