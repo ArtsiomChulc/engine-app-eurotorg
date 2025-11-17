@@ -3,8 +3,11 @@ export interface User {
     lastName: string;
     region: string;
     email: string;
-    password: string;
+    role: UserRole;
+    password?: string;
 }
+
+export type RolesType = "ADMIN" | "ENGINEER" | "USER" | null;
 
 export interface LoginCredentials {
     email: string;
@@ -12,6 +15,12 @@ export interface LoginCredentials {
 }
 
 export interface UserResponse {
-    user: User
-    accessToken: string
+    user: User;
+    accessToken: string;
+}
+
+export enum UserRole {
+    USER = "USER",
+    ENGINEER = "ENGINEER",
+    ADMIN = "ADMIN",
 }
