@@ -29,7 +29,8 @@ const Content = styled.div`
     max-width: 968px;
     display: flex;
     flex-direction: column;
-    margin: 40px auto 100px;
+    margin: 0 auto 100px;
+    padding: 0 15px;
 `;
 
 export const Layout = ({ children }: LayoutProps) => {
