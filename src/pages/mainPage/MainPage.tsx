@@ -1,14 +1,15 @@
 import { manePageData } from '@/pages/mainPage/schemas/manePageData';
 import { BlockInfo } from '@/shared/components/atoms/blockInfo/BlockInfo';
 import { Text } from '@/shared/components/atoms/text/Text';
+import {
+    PageTitle
+} from '@/shared/components/molecules/pageTtitle/PageTitle';
 import { MainPageContainer } from '@/shared/components/organizms/mainPageContainer/MainPageContainer';
 
 export const MainPage = () => {
     return (
         <>
-            <Text variant={'h1'} size={'2xl'} weight={'bold'} isTitle>
-                Главная
-            </Text>
+            <PageTitle title={'Главная'}/>
             <MainPageContainer>
                 {manePageData.map(({ icon, to, title, description, id }) => {
                     return (
