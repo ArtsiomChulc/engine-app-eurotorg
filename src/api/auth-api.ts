@@ -20,7 +20,13 @@ export const authApi = baseApi.injectEndpoints({
         refresh: build.mutation<UserResponse, void>({
             query: () => ({ url: 'auth/refresh', method: 'POST' }),
         }),
+        logout: build.mutation<void, void>({
+           query: () => ({
+               url: 'auth/logout',
+               method: 'POST'
+           })
+        })
     }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useRefreshMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation, useRefreshMutation, useLogoutMutation } = authApi;
