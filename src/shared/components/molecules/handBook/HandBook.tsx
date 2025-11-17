@@ -37,14 +37,14 @@ export const HandBook = ({ items }: HandBookProps) => {
                 {items &&
                     items.map(
                         ({
-                            marketAddress,
+                            address,
                             marketNumber,
                         }) => {
                             return (
                                 <SelectionItem
                                     key={marketNumber}
-                                    marketAddress={marketAddress}
-                                    to={marketNumber}
+                                    address={address}
+                                    to={marketNumber ?? ''}
                                     marketNumber={marketNumber}
                                 />
                             );
