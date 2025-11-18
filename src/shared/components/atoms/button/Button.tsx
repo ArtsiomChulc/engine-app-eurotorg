@@ -1,8 +1,8 @@
 import { Spinner } from '@/shared/components/atoms/spiner/Spinner';
 import { ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, CSSObject } from 'styled-components';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'error';
+export type ButtonVariant = 'primary' | 'secondary' | 'error' | 'user';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface StyledButtonProps {
@@ -55,6 +55,10 @@ const ButtonStyled = styled.button<StyledButtonProps>`
                 return css`
                     background: var(--error);
                 `;
+            case 'user':
+                return css`
+                    background: var(--user-btn);
+                `;
             default:
                 return css`
                     background: var(--primary);
@@ -84,6 +88,7 @@ type ButtonProps = {
     onClick?: () => void;
     type?: 'button' | 'submit';
     className?: string;
+    styles?: CSSObject;
 };
 
 export const Button = ({
@@ -96,6 +101,7 @@ export const Button = ({
     variant = 'primary',
     fullWidth = false,
     size = 'md',
+    styles
 }: ButtonProps) => {
     return (
         <ButtonStyled
@@ -106,8 +112,9 @@ export const Button = ({
             type={type}
             className={className}
             onClick={onClick}
+            style={styles}
         >
-            {!isLoading ? children : <Spinner/>}
+            {!isLoading ? children : <Spinner />}
         </ButtonStyled>
     );
 };
