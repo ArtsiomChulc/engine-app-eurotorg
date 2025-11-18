@@ -33,7 +33,7 @@ type Story = StoryObj<typeof meta>;
 export const SelectionItemStory: Story = {
     args: {
         marketNumber: '494',
-        marketAddress: 'Адрес магазина',
+        address: 'Адрес магазина',
         to: '/to-item',
     },
 };
