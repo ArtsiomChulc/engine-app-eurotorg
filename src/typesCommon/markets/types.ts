@@ -1,4 +1,16 @@
+import { User } from '@/typesCommon/authTypes';
+
 export type MarketsType = HandbookType;
+
+export type AdminTypeResUsers = User[];
+
+export type AdminTypeResPersons = {
+    firstName: string;
+    lastName: string;
+    middleName?: string;
+    phone: string;
+    email: string;
+};
 
 export type HandbookType = {
     marketNumber?: string;
