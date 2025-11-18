@@ -25,6 +25,20 @@ const TextWrapperStyled = styled.div`
 
 `
 
+const IconWrapper = styled.div`
+    background: var(--user-icon-wrap);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    
+    > svg {
+        color: var(--user-icon);
+    }
+`
+
 export const UserInfoBlock = ({
     icon,
     subtitle,
@@ -32,7 +46,9 @@ export const UserInfoBlock = ({
 }: UserInfoBlockProps) => {
     return (
         <UserInfoBlockStyled>
-            {icon}
+            <IconWrapper>
+                {icon}
+            </IconWrapper>
             <TextWrapperStyled>
                 <Text size={'xs'} variant={'h3'} color={'secondary'}>
                     {title}

@@ -8,6 +8,7 @@ import { AiOutlineProfile } from 'react-icons/ai';
 import { LuLogOut } from 'react-icons/lu';
 import { MdAlternateEmail } from 'react-icons/md';
 import { RiRoadMapFill } from 'react-icons/ri';
+import { RxAvatar } from 'react-icons/rx';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router';
 import styled from 'styled-components';
@@ -33,6 +34,21 @@ const UserInfoWrapper = styled.div`
     gap: 10px;
 `;
 
+const UserCircle = styled.div`
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background: var(--user-circle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    > svg {
+        align-self: center;
+    }
+`;
+
 export const UserProfile = () => {
     const [logoutReq] = useLogoutMutation();
     const dispatch = useDispatch();
@@ -47,6 +63,7 @@ export const UserProfile = () => {
     return (
         <UserProfileStyled>
             <PageTitle title={'Профиль'} />
+            <UserCircle><RxAvatar size={80} color={'var(--user-avatar)'} /></UserCircle>
             <UserInfoWrapper>
                 <UserInfoBlock
                     title={'Регион'}
@@ -76,8 +93,8 @@ export const UserProfile = () => {
                             borderRadius: 8,
                             padding: '10px 15px',
                             cursor: 'pointer',
-                            color: 'var(--text-light)',
-                            background: 'var(--primary)',
+                            color: 'var(--text-user-btn)',
+                            background: 'var(--user-btn)',
                         }}
                     >
                         Админ
@@ -85,7 +102,14 @@ export const UserProfile = () => {
                 )}
             </UserInfoWrapper>
 
-            <Button variant={'primary'} size={'lg'} onClick={logoutHandler}>
+            <Button
+                variant={'user'}
+                size={'lg'}
+                onClick={logoutHandler}
+                styles={{
+                    color: 'var(--text-user-btn)',
+                }}
+            >
                 Log out <LuLogOut title={'logout'} />
             </Button>
         </UserProfileStyled>
