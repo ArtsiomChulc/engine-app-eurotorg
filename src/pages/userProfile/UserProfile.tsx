@@ -54,10 +54,10 @@ export const UserProfile = () => {
         <UserProfileStyled>
             <PageTitle title={'Профиль'}/>
             <UserInfoWrapper>
-                <UserInfoBlock title={'Регион'} subtitle={user.region} icon={<RiRoadMapFill size={25} />} />
-                <UserInfoBlock title={'Имя'} subtitle={user.name} icon={<AiOutlineProfile size={25} />} />
-                <UserInfoBlock title={'Фамилия'} subtitle={user.lastName} icon={<AiOutlineProfile size={25} />} />
-                <UserInfoBlock title={'Почта'} subtitle={user.email} icon={<MdAlternateEmail size={25} />} />
+                <UserInfoBlock title={'Регион'} subtitle={user.region} icon={<RiRoadMapFill size={20} />} />
+                <UserInfoBlock title={'Имя'} subtitle={user.name} icon={<AiOutlineProfile size={20} />} />
+                <UserInfoBlock title={'Фамилия'} subtitle={user.lastName} icon={<AiOutlineProfile size={20} />} />
+                <UserInfoBlock title={'Почта'} subtitle={user.email} icon={<MdAlternateEmail size={20} />} />
                 {user.role === UserRole.ADMIN && (
                     <NavLink to={'admin'} style={{
                         border: '1px solid',
