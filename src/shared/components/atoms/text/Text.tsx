@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 type TextProps = {
     size?: '2xl' | 'xl' | 'lg' | 'base' | 'sm' | 'xs';
-    color?: 'primary' | 'secondary' | 'light' | 'placeholder';
+    color?: 'primary' | 'secondary' | 'light' | 'placeholder' | 'blue';
     variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span';
     weight?: 'normal' | 'medium' | 'bold';
     position?: 'left' | 'center' | 'right';
@@ -60,6 +60,10 @@ const TextStyled = styled.p<{
             case 'placeholder':
                 return css`
                     color: var(--text-placeholder);
+                `;
+            case 'blue':
+                return css`
+                    color: var(--text-blue);
                 `;
             default:
                 return css`
