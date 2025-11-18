@@ -11,17 +11,23 @@
     --error: #ef4444; /* Красный - ошибки */
 
     --base-color: #263238; /*spinner*/
+    --user-avatar: #7d9397; /*spinner*/
 
     /* Фоны */
     --bg-primary: #ffffff;
     --bg-secondary: #f6f7f8;
     --bg-sidebar: #1e293b;
+    --user-circle: #f8d7b9;
+    --user-btn: #f5e4e5;
+    --user-icon-wrap: #cfe3f6;
+    --user-icon: #1173d4;
     /* Текст */
     --text-primary: #1e293b;
     --text-secondary: #666;
     --text-light: #ffffff;
     --text-blue: #2563eb;
     --text-placeholder: #9ca3af;
+    --text-user-btn: #dc2828;
     /*Типографика*/
     /* Шрифты */
     font-family: 'Inter', -apple-system, sans-serif;
